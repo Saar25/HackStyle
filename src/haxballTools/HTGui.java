@@ -46,7 +46,7 @@ class HTGui extends BorderPane {
         toEmpty.setToggleGroup(buttons);
 
         TextField setAvatar = new TextField();
-        setAvatar.setOnMouseClicked(event -> htr.setAvatar(setAvatar.getText()));
+        setAvatar.setOnAction(event -> htr.setAvatar(setAvatar.getText()));
         setAvatar.setText("S t y l e S");
         setAvatar.setMaxWidth(200);
         setAvatar.setStyle("-fx-font: 20px Tahoma;");
