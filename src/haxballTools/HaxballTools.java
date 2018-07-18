@@ -1,5 +1,9 @@
 package haxballTools;
 
+import haxballTools.HTScripts.Avatar;
+import haxballTools.HTScripts.Clicker;
+import haxballTools.HTScripts.Macro;
+import haxballTools.HTScripts.Spam;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
@@ -9,6 +13,10 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class HaxballTools extends Application {
+
+    public static void main(String[] args) {
+        launch();
+    }
 
     @Override
     public void start(Stage primaryStage) {
@@ -22,14 +30,15 @@ public class HaxballTools extends Application {
          *      );
          */
         Map<String, HTScript> scripts = new LinkedHashMap<>();
-        scripts.put("Press", HTScript.MACRO);
-        scripts.put("Click", HTScript.CLICKER);
-        scripts.put("Avatar", HTScript.AVATAR);
-        scripts.put("Empty", HTScript.NOOP);
+        scripts.put("Press", Macro.create());
+        scripts.put("Click", Clicker.create());
+        scripts.put("Spam", Spam.splitFromGUI());
+        scripts.put("Avatar", Avatar.fromGUI());
+        scripts.put("Empty", null);
 
-        HTRobot robot = new HTRobot(60);
-        new HTKeyListener(robot);
-        Scene scene = new Scene(new HTGui(robot, scripts), 700, 300);
+        HTExecutor executor = new HTExecutor(60);
+        new HTKeyListener(executor);
+        Scene scene = new Scene(new HTGui(executor, scripts), 700, 300);
 
         primaryStage.setScene(scene);
         primaryStage.setTitle("HackStyle by Style");
@@ -38,9 +47,5 @@ public class HaxballTools extends Application {
             System.exit(0);
         });
         primaryStage.show();
-    }
-
-    public static void main(String[] args) {
-        launch();
     }
 }

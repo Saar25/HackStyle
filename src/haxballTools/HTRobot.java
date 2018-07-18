@@ -1,50 +1,67 @@
 package haxballTools;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 
-class HTRobot {
+public final class HTRobot {
 
-    private Timer timer;
+    private static final Robot ROBOT = createRobot();
 
-    private HTScript script = HTScript.MACRO;
+    private HTRobot() {
 
-    HTRobot(int delay) {
-
-        timer = new Timer(delay, e -> script.execute(timer.getDelay()));
     }
 
-    void setScript(HTScript script){ this.script = script; }
-
-    void start() {
-        timer.start();
+    private static Robot createRobot() {
+        try {
+            return new Robot();
+        } catch (AWTException e) {
+            System.err.println("Unable to create robot");
+            System.exit(-1);
+        }
+        return null;
     }
 
-    void stop() { timer.stop(); }
-
-    void setDelay(int delay) { timer.setDelay(delay); }
-
-    static void sendToChat(String string) {
+    public static void sendToChat(String string) {
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
         StringSelection stringSelection = new StringSelection(string);
         clipboard.setContents(stringSelection, stringSelection);
 
-        try {
-            Robot robot = new Robot();
+        if (ROBOT != null) {
+            ROBOT.keyPress(KeyEvent.VK_TAB);
+            ROBOT.keyRelease(KeyEvent.VK_TAB);
+            ROBOT.keyPress(KeyEvent.VK_CONTROL);
+            ROBOT.keyPress(KeyEvent.VK_V);
+            ROBOT.keyRelease(KeyEvent.VK_V);
+            ROBOT.keyRelease(KeyEvent.VK_CONTROL);
+            ROBOT.keyPress(KeyEvent.VK_ENTER);
+            ROBOT.keyRelease(KeyEvent.VK_ENTER);
+        }
+    }
 
-            robot.keyPress(KeyEvent.VK_TAB);
-            robot.keyRelease(KeyEvent.VK_TAB);
-            robot.keyPress(KeyEvent.VK_CONTROL);
-            robot.keyPress(KeyEvent.VK_V);
-            robot.keyRelease(KeyEvent.VK_V);
-            robot.keyRelease(KeyEvent.VK_CONTROL);
-            robot.keyPress(KeyEvent.VK_ENTER);
-            robot.keyRelease(KeyEvent.VK_ENTER);
-        } catch (AWTException e) {
-            System.err.println("Unable to create robot");
+    public static void kick(int duration) {
+        if (ROBOT != null) {
+            ROBOT.keyPress(KeyEvent.VK_SPACE);
+            sleep(duration);
+            ROBOT.keyRelease(KeyEvent.VK_SPACE);
+        }
+    }
+
+    public static void click(int duration) {
+        if (ROBOT != null) {
+            ROBOT.mousePress(MouseEvent.BUTTON1_DOWN_MASK);
+            sleep(duration);
+            ROBOT.mouseRelease(MouseEvent.BUTTON1_DOWN_MASK);
+        }
+    }
+
+    public static void sleep(int duration) {
+        try {
+            Thread.sleep(duration);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 

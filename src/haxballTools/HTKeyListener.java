@@ -11,10 +11,12 @@ import java.util.logging.Logger;
 
 class HTKeyListener implements NativeKeyListener {
 
-    private HTRobot htr;
+    private HTExecutor executor;
 
-    HTKeyListener(HTRobot htr) {
-        this.htr = htr;
+    private boolean pressing = false;
+
+    HTKeyListener(HTExecutor executor) {
+        this.executor = executor;
 
         LogManager.getLogManager().reset();
         Logger logger = Logger.getLogger(GlobalScreen.class.getPackage().getName());
@@ -30,14 +32,21 @@ class HTKeyListener implements NativeKeyListener {
 
     @Override
     public void nativeKeyPressed(NativeKeyEvent e) {
-        if (e.getKeyCode() == NativeKeyEvent.VC_E)
-            htr.start();
+        if (!pressing && e.getKeyCode() == NativeKeyEvent.VC_E) {
+            executor.start();
+            pressing = true;
+        }
     }
+
     @Override
     public void nativeKeyReleased(NativeKeyEvent e) {
-        if (e.getKeyCode() == NativeKeyEvent.VC_E)
-            htr.stop();
+        if (e.getKeyCode() == NativeKeyEvent.VC_E) {
+            executor.stop();
+            pressing = false;
+        }
     }
+
     @Override
-    public void nativeKeyTyped(NativeKeyEvent e) { }
+    public void nativeKeyTyped(NativeKeyEvent e) {
+    }
 }
