@@ -12,7 +12,7 @@ public final class Spam {
 
     }
 
-    public static HTScript create(String...s) {
+    public static HTScript create(String... s) {
         return new HTScript() {
             private String[] strings;
             private boolean running;
@@ -25,11 +25,16 @@ public final class Spam {
                 this.strings = s;
 
                 new Thread(() -> {
-                    int i = 0;
-                    while (running) {
-                        sendToChat(strings[(i++)]);
-                        sleep(duration);
-                        i%= strings.length;
+                    if (strings.length > 1) {
+                        for (String string : strings) {
+                            sendToChat(string);
+                            sleep(duration);
+                        }
+                    } else {
+                        while (running) {
+                            sendToChat(strings[(0)]);
+                            sleep(duration);
+                        }
                     }
                 }).start();
             }
@@ -58,7 +63,7 @@ public final class Spam {
         };
     }
 
-    public static HTScript splitFromGUI(){
+    public static HTScript splitFromGUI() {
         return new HTScript() {
             HTScript scriptX;
 

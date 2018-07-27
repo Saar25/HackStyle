@@ -21,14 +21,6 @@ public class HaxballTools extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        /*
-         * The scripts that will be shown on the GUI as toggle buttons
-         * To add a script:
-         *      scripts.put("name", m -> {
-         *              some code
-         *          }
-         *      );
-         */
         Map<String, HTScript> scripts = new LinkedHashMap<>();
         scripts.put("Press", Macro.create());
         scripts.put("Click", Clicker.create());

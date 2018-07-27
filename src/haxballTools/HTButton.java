@@ -15,7 +15,7 @@ class HTButton extends RadioButton {
         setStyle("-fx-font: 20px Tahoma;");
     }
 
-    void setScript(HTScript script) {
+    private void setScript(HTScript script) {
         setOnMouseClicked(event -> executor.setScript(script));
         if (getToggleGroup() != null && getToggleGroup().getSelectedToggle() == this) executor.setScript(script);
     }
