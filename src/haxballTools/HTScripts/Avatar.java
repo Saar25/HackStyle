@@ -37,19 +37,19 @@ public class Avatar {
     }
 
     public static HTScript fromGUI() {
-        return e -> {
-            int duration = (int) HTGui.getScrollBarValue();
-            String avatar = HTGui.getTextFieldText();
-            new Thread(() -> {
-                int i = 0;
-                while (i < avatar.length()) {
-                    sendToChat("/avatar " +
-                            (avatar.charAt(i) == ' ' ? "" : avatar.charAt(i)) +
-                            (i + 1 < avatar.length() ? avatar.charAt(i + 1) : ""));
-                    sleep(duration * 3);
-                    i += 2;
-                }
-            }).start();
+        return new HTScript() {
+            HTScript scriptX;
+
+            @Override
+            public void start(int d) {
+                scriptX = create(HTGui.getTextFieldText());
+                scriptX.start(d);
+            }
+
+            @Override
+            public void stop() {
+                scriptX.stop();
+            }
         };
     }
 
