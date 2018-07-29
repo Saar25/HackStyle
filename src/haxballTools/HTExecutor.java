@@ -1,30 +1,39 @@
 package haxballTools;
 
+import java.util.ArrayList;
+
 class HTExecutor {
 
-    private HTScript script;
-    private int delay;
+    private ArrayList<HTScript> scripts;
+    private int duration;
 
     HTExecutor(int delay) {
-        this.delay = delay;
+        this.duration = delay;
+        scripts = new ArrayList<>();
     }
 
-    void start() {
-        if (script != null)
-            script.start(delay);
+    void startScripts(int key) {
+        scripts.forEach(s -> {
+            if (s != null && s.getIndicator() == key) s.start(duration);
+        });
     }
 
-    void stop() {
-        if (script != null)
-            script.stop();
+    void stopScripts(int key) {
+        scripts.forEach(s -> {
+            if (s != null && s.getIndicator() == key) s.stop();
+        });
     }
 
-    void setScript(HTScript script) {
-        this.script = script;
+    void addScript(HTScript script) {
+        scripts.add(script);
     }
 
-    void setDelay(int delay) {
-        this.delay = delay;
+    void removeScript(HTScript script) {
+        scripts.remove(script);
+    }
+
+    void setDuration(int duration) {
+        this.duration = duration;
     }
 
 }

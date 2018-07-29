@@ -5,30 +5,37 @@ import haxballTools.HTScript;
 import static haxballTools.HTRobot.kick;
 import static haxballTools.HTRobot.sleep;
 
-public class Macro implements HTScript {
+public final class Macro {
 
-    private boolean running;
-    private int duration;
+    private Macro() {
+
+    }
 
     public static HTScript create() {
-        return new Macro();
+        return create(-1);
     }
 
-    @Override
-    public void start(int d) {
-        this.running = true;
-        this.duration = d;
+    public static HTScript create(int kicks) {
+        return new HTScript() {
+            private boolean running;
 
-        new Thread(() -> {
-            while (running) {
-                kick(duration);
-                sleep(duration);
+            @Override
+            public void start(int duration) {
+                this.running = true;
+                new Thread(() -> {
+                    int times = kicks;
+                    while (running && times != 0) {
+                        kick(duration);
+                        sleep(duration);
+                        times--;
+                    }
+                }).start();
             }
-        }).start();
-    }
 
-    @Override
-    public void stop() {
-        running = false;
+            @Override
+            public void stop() {
+                running = false;
+            }
+        };
     }
 }

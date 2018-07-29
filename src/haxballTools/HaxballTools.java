@@ -8,7 +8,9 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.jnativehook.keyboard.NativeKeyEvent;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -23,13 +25,16 @@ public class HaxballTools extends Application {
 
         Map<String, HTScript> scripts = new LinkedHashMap<>();
         scripts.put("Press", Macro.create());
+        scripts.put("Double", Macro.create(2));
         scripts.put("Click", Clicker.create());
         scripts.put("Spam", Spam.splitFromGUI());
         scripts.put("Avatar", Avatar.fromGUI());
-        scripts.put("Empty", null);
+
+        ArrayList<Integer> indicators = new ArrayList<>();
+        indicators.add(HTScript.DEFAULT_INDICATOR);
 
         HTExecutor executor = new HTExecutor(60);
-        new HTKeyListener(executor);
+        new HTKeyListener(executor, indicators);
         Scene scene = new Scene(new HTGui(executor, scripts), 700, 300);
 
         primaryStage.setScene(scene);

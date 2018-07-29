@@ -15,33 +15,19 @@ public final class Spam {
     public static HTScript create(String... s) {
         return new HTScript() {
             private String[] strings;
-            private boolean running;
             private int duration;
 
             @Override
             public void start(int d) {
-                this.running = true;
                 this.duration = d;
                 this.strings = s;
 
                 new Thread(() -> {
-                    if (strings.length > 1) {
-                        for (String string : strings) {
-                            sendToChat(string);
-                            sleep(duration);
-                        }
-                    } else {
-                        while (running) {
-                            sendToChat(strings[(0)]);
-                            sleep(duration);
-                        }
+                    for (String string : strings) {
+                        sendToChat(string);
+                        sleep(duration);
                     }
                 }).start();
-            }
-
-            @Override
-            public void stop() {
-                running = false;
             }
         };
     }

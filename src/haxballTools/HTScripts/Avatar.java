@@ -6,7 +6,7 @@ import haxballTools.HTScript;
 import static haxballTools.HTRobot.sendToChat;
 import static haxballTools.HTRobot.sleep;
 
-public class Avatar {
+public final class Avatar {
 
     private Avatar() {
 

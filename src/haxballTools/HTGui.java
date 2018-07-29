@@ -29,12 +29,9 @@ public class HTGui extends BorderPane {
         vBox.setSpacing(20);
         vBox.setAlignment(Pos.CENTER);
 
-        ToggleGroup toggleGroup = new ToggleGroup();
-
         scripts.forEach((string, script) -> {
-            HTButton button = new HTButton(executor, string, script);
-            button.setToggleGroup(toggleGroup);
-            hBox.getChildren().add(button);
+            HTCheckBox checkBox = new HTCheckBox(executor, string, script);
+            hBox.getChildren().add(checkBox);
         });
 
         textField = new TextField("");
@@ -43,7 +40,7 @@ public class HTGui extends BorderPane {
 
         scrollBar = new ScrollBar();
         scrollBar.setOrientation(Orientation.HORIZONTAL);
-        scrollBar.valueProperty().addListener(e -> executor.setDelay((int) (1000 / scrollBar.getValue())));
+        scrollBar.valueProperty().addListener(e -> executor.setDuration((int) (1000 / scrollBar.getValue())));
         scrollBar.setPrefHeight(61);
         scrollBar.setValue(60);
         scrollBar.setMax(100);

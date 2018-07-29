@@ -5,6 +5,7 @@ import org.jnativehook.NativeHookException;
 import org.jnativehook.keyboard.NativeKeyEvent;
 import org.jnativehook.keyboard.NativeKeyListener;
 
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
@@ -13,10 +14,12 @@ class HTKeyListener implements NativeKeyListener {
 
     private HTExecutor executor;
 
+    private ArrayList<Integer> keys;
     private boolean pressing = false;
 
-    HTKeyListener(HTExecutor executor) {
+    HTKeyListener(HTExecutor executor, ArrayList<Integer> keys) {
         this.executor = executor;
+        this.keys = keys;
 
         LogManager.getLogManager().reset();
         Logger logger = Logger.getLogger(GlobalScreen.class.getPackage().getName());
@@ -32,16 +35,16 @@ class HTKeyListener implements NativeKeyListener {
 
     @Override
     public void nativeKeyPressed(NativeKeyEvent e) {
-        if (!pressing && e.getKeyCode() == NativeKeyEvent.VC_E) {
-            executor.start();
+        if (!pressing && keys.contains(e.getKeyCode())) {
+            executor.startScripts(e.getKeyCode());
             pressing = true;
         }
     }
 
     @Override
     public void nativeKeyReleased(NativeKeyEvent e) {
-        if (e.getKeyCode() == NativeKeyEvent.VC_E) {
-            executor.stop();
+        if (keys.contains(e.getKeyCode())) {
+            executor.stopScripts(e.getKeyCode());
             pressing = false;
         }
     }
