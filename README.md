@@ -1,10 +1,6 @@
 # Haxball-Tools
 Haxball usefull tools
 
-Press 'E' to execute
+Press 'E' to execute (can be changed in "configs.txt" file)
 
-Avatar - takes every 2 letters : "Hello" = /avatar He , /avatar ll , /avatar o
-
-Spam - Spamming the chat, can split the messages with '/' between every line
-
-New vertion - Multiply indicators
+You can split the spam messages with '/' between lines
