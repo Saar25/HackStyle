@@ -16,11 +16,11 @@ public final class Avatar implements HTScript {
         this.loader = loader;
     }
 
-    public static HTScript create(String avatar, int indicator) {
+    public static Avatar create(String avatar, int indicator) {
         return new Avatar(() -> avatar, indicator);
     }
 
-    public static HTScript fromGUI(int indicator) {
+    public static Avatar fromGUI(int indicator) {
         return new Avatar(HTGui::getTextFieldText, indicator);
     }
 

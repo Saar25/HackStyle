@@ -15,7 +15,7 @@ public final class Clicker implements HTScript {
         this.running = false;
     }
 
-    public static HTScript create(int indicator) {
+    public static Clicker create(int indicator) {
         return new Clicker(indicator);
     }
 

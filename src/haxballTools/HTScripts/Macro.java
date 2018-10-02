@@ -17,11 +17,11 @@ public final class Macro implements HTScript{
         this.running = false;
     }
 
-    public static HTScript createEndless(int indicator) {
+    public static Macro createEndless(int indicator) {
         return new Macro(-1, indicator);
     }
 
-    public static HTScript create(int kicks, int indicator) {
+    public static Macro create(int kicks, int indicator) {
         return new Macro(kicks, indicator);
     }
 

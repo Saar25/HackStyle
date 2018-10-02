@@ -16,11 +16,11 @@ public final class Spam implements HTScript {
         this.loader = loader;
     }
 
-    public static HTScript create(String[] s, int indicator) {
+    public static Spam create(String[] s, int indicator) {
         return new Spam(() -> s, indicator);
     }
 
-    public static HTScript fromGUI(String regex, int indicator) {
+    public static Spam fromGUI(String regex, int indicator) {
         return new Spam(() -> HTGui.getTextFieldText().split(regex), indicator);
     }
 
