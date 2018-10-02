@@ -5,37 +5,46 @@ import haxballTools.HTScript;
 import static haxballTools.HTRobot.kick;
 import static haxballTools.HTRobot.sleep;
 
-public final class Macro {
+public final class Macro implements HTScript{
 
-    private Macro() {
+    private final int indicator;
+    private final int kicks;
+    private boolean running;
 
+    private Macro(int kicks, int indicator) {
+        this.indicator = indicator;
+        this.kicks = kicks;
+        this.running = false;
     }
 
-    public static HTScript create() {
-        return create(-1);
+    public static HTScript createEndless(int indicator) {
+        return new Macro(-1, indicator);
     }
 
-    public static HTScript create(int kicks) {
-        return new HTScript() {
-            private boolean running;
+    public static HTScript create(int kicks, int indicator) {
+        return new Macro(kicks, indicator);
+    }
 
-            @Override
-            public void start(int duration) {
-                this.running = true;
-                new Thread(() -> {
-                    int times = kicks;
-                    while (running && times != 0) {
-                        kick(duration);
-                        sleep(duration);
-                        times--;
-                    }
-                }).start();
+    @Override
+    public void start(int duration) {
+        this.running = true;
+        new Thread(() -> {
+            int times = kicks;
+            while (running && times != 0) {
+                kick(duration);
+                sleep(duration);
+                times--;
             }
+        }).start();
+    }
 
-            @Override
-            public void stop() {
-                running = false;
-            }
-        };
+    @Override
+    public void stop() {
+        this.running = false;
+    }
+
+    @Override
+    public int getIndicator() {
+        return indicator;
     }
 }

@@ -6,64 +6,42 @@ import haxballTools.HTScript;
 import static haxballTools.HTRobot.sendToChat;
 import static haxballTools.HTRobot.sleep;
 
-public final class Spam {
+public final class Spam implements HTScript {
 
-    private Spam() {
+    private final int indicator;
+    private final Loader loader;
 
+    public Spam(Loader loader, int indicator) {
+        this.indicator = indicator;
+        this.loader = loader;
     }
 
-    public static HTScript create(String... s) {
-        return new HTScript() {
-            private String[] strings;
-            private int duration;
-
-            @Override
-            public void start(int d) {
-                this.duration = d;
-                this.strings = s;
-
-                new Thread(() -> {
-                    for (String string : strings) {
-                        sendToChat(string);
-                        sleep(duration);
-                    }
-                }).start();
-            }
-        };
+    public static HTScript create(String[] s, int indicator) {
+        return new Spam(() -> s, indicator);
     }
 
-    public static HTScript fromGUI() {
-        return new HTScript() {
-            HTScript scriptX;
-
-            @Override
-            public void start(int d) {
-                scriptX = create(HTGui.getTextFieldText());
-                scriptX.start(d);
-            }
-
-            @Override
-            public void stop() {
-                scriptX.stop();
-            }
-        };
+    public static HTScript fromGUI(String regex, int indicator) {
+        return new Spam(() -> HTGui.getTextFieldText().split(regex), indicator);
     }
 
-    public static HTScript splitFromGUI() {
-        return new HTScript() {
-            HTScript scriptX;
-
-            @Override
-            public void start(int d) {
-                scriptX = create(HTGui.getTextFieldText().split("/"));
-                scriptX.start(d);
+    @Override
+    public void start(int d) {
+        new Thread(() -> {
+            String[] strings = loader.getStrings();
+            for (String string : strings) {
+                sendToChat(string);
+                sleep(d);
             }
+        }).start();
+    }
 
-            @Override
-            public void stop() {
-                scriptX.stop();
-            }
-        };
+    @Override
+    public int getIndicator() {
+        return indicator;
+    }
+
+    private interface Loader {
+        String[] getStrings();
     }
 
 }

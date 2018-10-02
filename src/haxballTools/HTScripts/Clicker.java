@@ -5,35 +5,38 @@ import haxballTools.HTScript;
 import static haxballTools.HTRobot.click;
 import static haxballTools.HTRobot.sleep;
 
-public final class Clicker {
+public final class Clicker implements HTScript {
 
-    private Clicker() {
+    private final int indicator;
+    private boolean running;
 
+    private Clicker(int indicator) {
+        this.indicator = indicator;
+        this.running = false;
     }
 
-    public static HTScript create() {
-        return new HTScript() {
+    public static HTScript create(int indicator) {
+        return new Clicker(indicator);
+    }
 
-            private boolean running;
-            private int duration;
-
-            @Override
-            public void start(int d) {
-                running = true;
-                duration = d;
-
-                new Thread(() -> {
-                    while (running) {
-                        click(duration);
-                        sleep(duration);
-                    }
-                }).start();
+    @Override
+    public void start(int d) {
+        running = true;
+        new Thread(() -> {
+            while (running) {
+                click(d);
+                sleep(d);
             }
+        }).start();
+    }
 
-            @Override
-            public void stop() {
-                running = false;
-            }
-        };
+    @Override
+    public void stop() {
+        running = false;
+    }
+
+    @Override
+    public int getIndicator() {
+        return indicator;
     }
 }
