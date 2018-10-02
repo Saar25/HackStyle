@@ -5,7 +5,6 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollBar;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -17,10 +16,9 @@ public class HTGui extends BorderPane {
 
     private static TextField textField;
     private static ScrollBar scrollBar;
-    private static Label label;
+    private Label label;
 
-
-    HTGui(HTExecutor executor, Map<String, HTScript> scripts) {
+    public HTGui(HTExecutor executor, Map<String, HTScript> scripts) {
 
         HBox hBox = new HBox();
         hBox.setSpacing(20);
@@ -46,7 +44,7 @@ public class HTGui extends BorderPane {
         scrollBar.setMax(100);
         scrollBar.setMin(5);
 
-        label = new Label("Executions per second: 60");
+        label = new Label("Executions per second: " + scrollBar.getValue());
         label.setTextFill(Color.WHITE);
         scrollBar.valueProperty().addListener(e -> label.setText("Executions per second: " + (int)getScrollBarValue()));
 

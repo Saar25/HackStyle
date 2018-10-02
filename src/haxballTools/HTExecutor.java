@@ -7,32 +7,36 @@ class HTExecutor {
     private ArrayList<HTScript> scripts;
     private int duration;
 
-    HTExecutor(int delay) {
-        this.duration = delay;
-        scripts = new ArrayList<>();
+    public HTExecutor(int duration) {
+        this.scripts = new ArrayList<>();
+        this.duration = duration;
     }
 
-    void startScripts(int key) {
-        scripts.forEach(s -> {
-            if (s != null && s.getIndicator() == key) s.start(duration);
-        });
+    public void startScripts(int key) {
+        for (HTScript s : scripts) {
+            if (s != null && s.getIndicator() == key) {
+                s.start(duration);
+            }
+        }
     }
 
-    void stopScripts(int key) {
-        scripts.forEach(s -> {
-            if (s != null && s.getIndicator() == key) s.stop();
-        });
+    public void stopScripts(int key) {
+        for (HTScript s : scripts) {
+            if (s != null && s.getIndicator() == key) {
+                s.stop();
+            }
+        }
     }
 
-    void addScript(HTScript script) {
-        scripts.add(script);
+    public void addScript(HTScript script) {
+        this.scripts.add(script);
     }
 
-    void removeScript(HTScript script) {
-        scripts.remove(script);
+    public void removeScript(HTScript script) {
+        this.scripts.remove(script);
     }
 
-    void setDuration(int duration) {
+    public void setDuration(int duration) {
         this.duration = duration;
     }
 

@@ -2,24 +2,24 @@ package haxballTools;
 
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
+import org.jnativehook.keyboard.NativeKeyAdapter;
 import org.jnativehook.keyboard.NativeKeyEvent;
 import org.jnativehook.keyboard.NativeKeyListener;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
-class HTKeyListener implements NativeKeyListener {
+class HTKeyListener extends NativeKeyAdapter {
 
-    private HTExecutor executor;
+    private final HTExecutor executor;
+    private final Map<Integer, Boolean> keys;
 
-    private ArrayList<Integer> keys;
-    private boolean pressing = false;
-
-    HTKeyListener(HTExecutor executor, ArrayList<Integer> keys) {
+    public HTKeyListener(HTExecutor executor) {
         this.executor = executor;
-        this.keys = keys;
+        this.keys = new HashMap<>();
 
         LogManager.getLogManager().reset();
         Logger logger = Logger.getLogger(GlobalScreen.class.getPackage().getName());
@@ -33,23 +33,27 @@ class HTKeyListener implements NativeKeyListener {
         GlobalScreen.addNativeKeyListener(this);
     }
 
+    public void addKey(int key) {
+        if (!keys.containsKey(key)) {
+            keys.put(key, false);
+        }
+    }
+
     @Override
     public void nativeKeyPressed(NativeKeyEvent e) {
-        if (!pressing && keys.contains(e.getKeyCode())) {
-            executor.startScripts(e.getKeyCode());
-            pressing = true;
+        int keyCode = e.getKeyCode();
+        if (keys.containsKey(keyCode) && !keys.get(keyCode)) {
+            executor.startScripts(keyCode);
+            keys.put(keyCode, true);
         }
     }
 
     @Override
     public void nativeKeyReleased(NativeKeyEvent e) {
-        if (keys.contains(e.getKeyCode())) {
-            executor.stopScripts(e.getKeyCode());
-            pressing = false;
+        int keyCode = e.getKeyCode();
+        if (keys.containsKey(keyCode) && keys.get(keyCode)) {
+            executor.stopScripts(keyCode);
+            keys.put(keyCode, false);
         }
-    }
-
-    @Override
-    public void nativeKeyTyped(NativeKeyEvent e) {
     }
 }

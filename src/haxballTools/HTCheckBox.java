@@ -2,9 +2,9 @@ package haxballTools;
 
 import javafx.scene.control.CheckBox;
 
-class HTCheckBox extends CheckBox {
+public class HTCheckBox extends CheckBox {
 
-    HTCheckBox(HTExecutor executor, String text, HTScript script) {
+    public HTCheckBox(HTExecutor executor, String text, HTScript script) {
         super(text);
         setMinSize(100, 61);
         setSelected(false);

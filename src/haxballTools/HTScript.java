@@ -1,10 +1,6 @@
 package haxballTools;
 
-import org.jnativehook.keyboard.NativeKeyEvent;
-
 public interface HTScript {
-
-    int DEFAULT_INDICATOR = NativeKeyEvent.VC_E;
 
     void start(int duration);
 
@@ -12,8 +8,6 @@ public interface HTScript {
 
     }
 
-    default int getIndicator() {
-        return DEFAULT_INDICATOR;
-    }
+    int getIndicator();
 
 }

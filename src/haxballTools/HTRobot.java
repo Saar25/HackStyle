@@ -29,32 +29,27 @@ public final class HTRobot {
         StringSelection stringSelection = new StringSelection(string);
         clipboard.setContents(stringSelection, stringSelection);
 
-        if (ROBOT != null) {
-            ROBOT.keyPress(KeyEvent.VK_TAB);
-            ROBOT.keyRelease(KeyEvent.VK_TAB);
-            ROBOT.keyPress(KeyEvent.VK_CONTROL);
-            ROBOT.keyPress(KeyEvent.VK_V);
-            ROBOT.keyRelease(KeyEvent.VK_V);
-            ROBOT.keyRelease(KeyEvent.VK_CONTROL);
-            ROBOT.keyPress(KeyEvent.VK_ENTER);
-            ROBOT.keyRelease(KeyEvent.VK_ENTER);
-        }
+        ROBOT.keyPress(KeyEvent.VK_TAB);
+        ROBOT.keyRelease(KeyEvent.VK_TAB);
+        ROBOT.keyPress(KeyEvent.VK_CONTROL);
+        ROBOT.keyPress(KeyEvent.VK_V);
+        ROBOT.keyRelease(KeyEvent.VK_V);
+        ROBOT.keyRelease(KeyEvent.VK_CONTROL);
+        ROBOT.keyPress(KeyEvent.VK_ENTER);
+        ROBOT.keyRelease(KeyEvent.VK_ENTER);
+
     }
 
     public static void kick(int duration) {
-        if (ROBOT != null) {
-            ROBOT.keyPress(KeyEvent.VK_SPACE);
-            sleep(duration);
-            ROBOT.keyRelease(KeyEvent.VK_SPACE);
-        }
+        ROBOT.keyPress(KeyEvent.VK_SPACE);
+        sleep(duration);
+        ROBOT.keyRelease(KeyEvent.VK_SPACE);
     }
 
     public static void click(int duration) {
-        if (ROBOT != null) {
-            ROBOT.mousePress(MouseEvent.BUTTON1_DOWN_MASK);
-            sleep(duration);
-            ROBOT.mouseRelease(MouseEvent.BUTTON1_DOWN_MASK);
-        }
+        ROBOT.mousePress(MouseEvent.BUTTON1_DOWN_MASK);
+        sleep(duration);
+        ROBOT.mouseRelease(MouseEvent.BUTTON1_DOWN_MASK);
     }
 
     public static void sleep(int duration) {
