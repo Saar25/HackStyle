@@ -1,15 +1,15 @@
 package haxballTools.HTScripts;
 
 import haxballTools.HTGui;
+import haxballTools.HTRobot;
 import haxballTools.HTScript;
-
-import static haxballTools.HTRobot.sendToChat;
-import static haxballTools.HTRobot.sleep;
 
 public final class Avatar implements HTScript {
 
     private final int indicator;
     private final Loader loader;
+
+    private boolean running = false;
 
     private Avatar(Loader loader, int indicator) {
         this.indicator = indicator;
@@ -25,18 +25,29 @@ public final class Avatar implements HTScript {
     }
 
     @Override
-    public void start(int d) {
+    public void start(int duration) {
+        running = true;
         new Thread(() -> {
             int i = 0;
             String avatar = loader.getAvatar();
-            while (i < avatar.length()) {
-                sendToChat("/avatar " +
-                        (avatar.charAt(i) == ' ' ? "" : avatar.charAt(i)) +
-                        (i + 1 < avatar.length() ? avatar.charAt(i + 1) : ""));
-                sleep(d * 3);
-                i += 2;
+            while (running) {
+                HTRobot.setAvatar(getAvatar(avatar, i));
+                i = i + 2 < avatar.length() ? i + 2 : 0;
+                HTRobot.sleep(duration * 3);
             }
+            HTRobot.setAvatar(getAvatar(avatar, 0));
         }).start();
+    }
+
+    private String getAvatar(String avatar, int i) {
+        return avatar.length() > i + 1
+                ? avatar.substring(i, i + 2)
+                : avatar.charAt(i) + "";
+    }
+
+    @Override
+    public void stop() {
+        running = false;
     }
 
     @Override
