@@ -11,5 +11,3 @@ Double kick
 Clicker
 Spam
 Avatar changer
-
-https://user-images.githubusercontent.com/37410028/49618902-f38ee500-f9c2-11e8-8f43-2461f64c9024.png
