@@ -1,4 +1,4 @@
-# Haxball-Tools
+# HackStyle
 Haxball usefull tools
 
 Press 'E' to execute (can be changed in "configs.txt" file)
