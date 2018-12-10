@@ -1,5 +1,5 @@
 # HackStyle
-Haxball usefull tools
+Haxball useful tools
 
 Press 'E' to execute (can be changed in "configs.txt" file)
 
