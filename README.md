@@ -19,4 +19,6 @@ Before you enter the room - Enter the "Internet" tab and toggle the "Listen to n
 
 After you enter there will be a new Ip and a port in the text field
 
-![74](https://user-images.githubusercontent.com/37410028/49618902-f38ee500-f9c2-11e8-8f43-2461f64c9024.png)
+https://user-images.githubusercontent.com/37410028/56759615-05222f00-67a2-11e9-81b7-0deb3ed1060c.png
+
+https://user-images.githubusercontent.com/37410028/56759603-00f61180-67a2-11e9-9b24-5b472ac5e74b.png
