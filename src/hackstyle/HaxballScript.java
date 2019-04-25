@@ -1,5 +1,7 @@
 package hackstyle;
 
+import hackstyle.gui.HSGui;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -35,6 +37,10 @@ public abstract class HaxballScript {
 
     protected double getDuration() {
         return 1000 / HSGui.getScrollBarValue();
+    }
+
+    protected String getText() {
+        return HSGui.getTextFieldText();
     }
 
     protected boolean isRunning() {

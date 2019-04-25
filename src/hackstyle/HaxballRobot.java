@@ -48,14 +48,30 @@ public final class HaxballRobot {
     }
 
     public static void kick(int duration) {
-        ROBOT.keyPress(KeyEvent.VK_SPACE);
+        startKick();
         sleep(duration);
+        stopKick();
+    }
+
+    public static void startKick() {
+        ROBOT.keyPress(KeyEvent.VK_SPACE);
+    }
+
+    public static void stopKick() {
         ROBOT.keyRelease(KeyEvent.VK_SPACE);
     }
 
     public static void click(int duration) {
-        ROBOT.mousePress(MouseEvent.BUTTON1_DOWN_MASK);
+        startClick();
         sleep(duration);
+        stopClick();
+    }
+
+    public static void startClick() {
+        ROBOT.mousePress(MouseEvent.BUTTON1_DOWN_MASK);
+    }
+
+    public static void stopClick() {
         ROBOT.mouseRelease(MouseEvent.BUTTON1_DOWN_MASK);
     }
 

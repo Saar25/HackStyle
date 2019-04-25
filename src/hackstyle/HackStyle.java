@@ -1,9 +1,7 @@
 package hackstyle;
 
-import hackstyle.scripts.Avatar;
-import hackstyle.scripts.Clicker;
-import hackstyle.scripts.Macro;
-import hackstyle.scripts.Spam;
+import hackstyle.gui.HSGui;
+import hackstyle.scripts.*;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
@@ -22,7 +20,7 @@ public class HackStyle extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        HTConfigs configs = new HTConfigs();
+        HSConfigs configs = new HSConfigs();
         try {
             configs.loadData("/configs.txt");
         } catch (Exception e) {
@@ -41,7 +39,7 @@ public class HackStyle extends Application {
         scripts.put("Avatar", Avatar.fromGUI(     configs.getIndicator("AVATAR", defaultIndicator)));
 
         Keyboard.init();
-        HSGui gui = new HSGui(scripts);
+        final HSGui gui = new HSGui(scripts);
         gui.setTextFieldText(configs.getString("DEFAULT AVATAR", ""));
 
         Scene scene = new Scene(gui, 700, 300);
