@@ -12,12 +12,12 @@ Clicker
 Spam
 Avatar changer
 
-New Feature:
+New Feature: (currently not working)
 Listen to new connections!
 
 Before you enter the room - Enter the "Internet" tab and toggle the "Listen to new connections" button
 
-After you enter there will be a new Ip and a port in the text field
+After you enter there will be a new IP and a port in the text field
 
 ![alt text](https://user-images.githubusercontent.com/37410028/56759615-05222f00-67a2-11e9-81b7-0deb3ed1060c.png)
 
