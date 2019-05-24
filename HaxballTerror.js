@@ -1,3 +1,13 @@
+// ==UserScript==
+// @name         Haxball Terror
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  try to take over the world!
+// @author       You
+// @match        https://*.haxball.com/*
+// @grant        none
+// ==/UserScript==
+
 window.gameDocument = document.getElementsByClassName('gameframe')[0].contentWindow.document
 window.style = {};
 
@@ -7,6 +17,10 @@ style.write = function(text) {
 
 style.send = function() {
     gameDocument.getElementsByClassName("input")[0].getElementsByTagName("button")[0].click();
+}
+
+style.getMessage = function() {
+    return gameDocument.getElementsByTagName("input")[0].value;
 }
 
 function copyText(text) {
@@ -43,26 +57,31 @@ function printAll() {
 }
 
 function tagAll() {
-    var string = getAll();
+    var message = style.getMessage();
+    var string = getAll() + message;
     style.write(string);
     style.send();
+    style.write(message);
+}
+
+function addInGameButtons() {
+    var input = gameDocument.getElementsByClassName("input")[0];
+    if (input !== undefined) {
+        var tag = input.children[1].cloneNode(false);
+        tag.style.marginLeft = "5px";
+        tag.innerText = "TagAll";
+        tag.onclick = tagAll;
+        input.appendChild(tag);
+        var print = input.children[1].cloneNode(false);
+        print.style.marginLeft = "5px";
+        print.innerText = "PrintAll";
+        print.onclick = printAll;
+        input.appendChild(print);
+    }
 }
 
 function addButtons() {
-    var input = gameDocument.getElementsByClassName("input")[0];
-    if (input === undefined) {
-        return;
-    }
-    var tag = input.children[1].cloneNode(false);
-    tag.style.marginLeft = "5px";
-    tag.innerText = "TagAll";
-    tag.onclick = tagAll;
-    input.appendChild(tag);
-    var print = input.children[1].cloneNode(false);
-    print.style.marginLeft = "5px";
-    print.innerText = "PrintAll";
-    print.onclick = printAll;
-    input.appendChild(print);
+    addInGameButtons();
 }
 
 setTimeout(function() {
@@ -71,3 +90,4 @@ setTimeout(function() {
     observer.observe(holder, {childList: true});
     addButtons();
 }, 3000);
+
