@@ -13,45 +13,32 @@ style.getMessage = function() {
     return gameDocument.getElementsByTagName("input")[0].value;
 }
 
-function copyText(text) {
-    var textArea = document.createElement("textarea");
-    document.body.appendChild(textArea);
-    textArea.value = text;
-    textArea.focus();
-    textArea.select();
-    document.execCommand('copy');
-    document.body.removeChild(textArea);
-}
-
 function getAll() {
     var players = gameDocument.querySelectorAll('[data-hook=name]');
     var string = ""
     for (var i = 0; i < players.length; i++) {
-        if (players[i].innerText == "") string += "@_ ";
-        else string += "@" + players[i].innerText + " ";
+        var player = players[i].innerHTML.replace(/ /g, "_");
+        string += "@" + player + " ";
     }
     return string;
 }
 
-function printAll() {
-    var string = getAll();
-    var p = document.createElement("p");
-    p.innerText = ">>> Copy this: " + string;
-    gameDocument.getElementsByClassName("log ps")[0].appendChild(p);
-    var copy = document.createElement("button");
-    copy.innerText = "Copy";
-    p.appendChild(copy);
-    copy.onclick = function() {
-        copyText(string);
-    }
+function spamMessage() {
+    var message = style.getMessage();
+    style.write(message);
+    style.send();
+    style.write(message);
 }
 
 function tagAll() {
-    var message = style.getMessage();
-    var string = getAll() + message;
-    style.write(string);
-    style.send();
-    style.write(message);
+    var tag = getAll();
+    if (tag) {
+        var message = style.getMessage();
+        var string = tag + message;
+        style.write(string);
+        style.send();
+        style.write(message);
+    }
 }
 
 function addInGameButtons() {
@@ -62,11 +49,11 @@ function addInGameButtons() {
         tag.innerText = "TagAll";
         tag.onclick = tagAll;
         input.appendChild(tag);
-        var print = input.children[1].cloneNode(false);
-        print.style.marginLeft = "5px";
-        print.innerText = "PrintAll";
-        print.onclick = printAll;
-        input.appendChild(print);
+        var spam = input.children[1].cloneNode(false);
+        spam.style.marginLeft = "5px";
+        spam.innerText = "Spam";
+        spam.onclick = spamMessage;
+        input.appendChild(spam);
     }
 }
 
@@ -80,4 +67,3 @@ setTimeout(function() {
     observer.observe(holder, {childList: true});
     addButtons();
 }, 3000);
-
