@@ -1,3 +1,13 @@
+// ==UserScript==
+// @name         Haxball Terror
+// @namespace    http://tampermonkey.net/
+// @version      1
+// @description  Terror every room in Haxball
+// @author       Style (Haxball) - MrTarnegol (FxP)
+// @match        https://*.haxball.com/*
+// @grant        none
+// ==/UserScript==
+
 window.gameDocument = document.getElementsByClassName('gameframe')[0].contentWindow.document
 window.style = {};
 
