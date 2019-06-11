@@ -39,7 +39,7 @@ public class MainTab extends Tab {
         mainScreen.setCenter(mainBox);
         mainScreen.setStyle("-fx-background-color: black");
 
-        closableProperty().set(false);
+        setClosable(false);
         setContent(mainScreen);
     }
 }

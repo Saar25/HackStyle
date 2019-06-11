@@ -1,5 +1,6 @@
 package hackstyle.gui;
 
+import hackstyle.HSConfigs;
 import hackstyle.HaxballScript;
 import javafx.geometry.Orientation;
 import javafx.scene.control.ScrollBar;
@@ -13,7 +14,7 @@ public class HSGui extends TabPane {
     private static TextField textField;
     private static ScrollBar scrollBar;
 
-    public HSGui(Map<String, HaxballScript> scripts) {
+    public HSGui(HSConfigs configs, Map<String, HaxballScript> scripts) {
         textField = new TextField("");
         textField.setMaxWidth(200);
         textField.setStyle("-fx-font: 20px Tahoma;");
@@ -27,6 +28,7 @@ public class HSGui extends TabPane {
 
         getTabs().add(new MainTab(scripts, scrollBar, textField));
         getTabs().add(new InternetTab());
+        getTabs().add(new SettingsTab(configs));
     }
 
     public static double getScrollBarValue() {
@@ -39,6 +41,10 @@ public class HSGui extends TabPane {
 
     public void setTextFieldText(String s) {
         if (textField != null) textField.textProperty().setValue(s);
+    }
+
+    public void setScrollBarValue(double value) {
+        if (scrollBar != null) scrollBar.setValue(value);
     }
 
 }

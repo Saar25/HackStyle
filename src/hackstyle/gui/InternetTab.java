@@ -5,7 +5,6 @@ import hackstyle.internet.Netstat;
 import javafx.geometry.Pos;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -42,7 +41,7 @@ public class InternetTab extends Tab {
         mainBox.getChildren().add(listenBtn);
 
 
-        final Timer timer = new Timer(4000, e -> {
+        final Timer timer = new Timer(500, e -> {
             netstat = Netstat.current();
             List<Connection> connections = getNewConnections();
             if (connections.size() > 0) {
@@ -64,7 +63,7 @@ public class InternetTab extends Tab {
 
         mainBox.getChildren().addAll(buttons, textArea);
 
-        closableProperty().set(false);
+        setClosable(false);
         setContent(mainBox);
     }
 
