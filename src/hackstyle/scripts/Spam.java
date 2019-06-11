@@ -1,6 +1,6 @@
 package hackstyle.scripts;
 
-import hackstyle.HSGui;
+import hackstyle.gui.HSGui;
 import hackstyle.HaxballRobot;
 import hackstyle.HaxballScript;
 

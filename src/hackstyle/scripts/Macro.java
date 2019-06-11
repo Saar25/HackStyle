@@ -12,7 +12,7 @@ public final class Macro extends HaxballScript {
         this.kicks = kicks;
     }
 
-    public static Macro createEndless(int indicator) {
+    public static Macro endless(int indicator) {
         return new Macro(-1, indicator);
     }
 
