@@ -6,7 +6,6 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.jnativehook.keyboard.NativeKeyEvent;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -20,32 +19,33 @@ public class HackStyle extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        HSConfigs configs = new HSConfigs();
+        HSConfigs configs = new HSConfigs("configs.txt");
         try {
-            configs.loadData("/configs.txt");
+            configs.loadData();
         } catch (Exception e) {
             System.err.println("Unable to load configs");
         }
 
-        int defaultIndicator = NativeKeyEvent.VC_E;
-        int kicks = configs.getInt("KICKS", 2);
-        String regex = configs.getString("REGEX", "/");
+        String s = configs.getString("SPLIT");
 
         Map<String, HaxballScript> scripts = new LinkedHashMap<>();
-        scripts.put("Press" , Macro.createEndless(configs.getIndicator("PRESS" , defaultIndicator)));
-        scripts.put("Double", Macro.create(kicks, configs.getIndicator("DOUBLE", defaultIndicator)));
-        scripts.put("Click" , Clicker.create(     configs.getIndicator("CLICK" , defaultIndicator)));
-        scripts.put("Spam"  , Spam.fromGUI(regex, configs.getIndicator("SPAM"  , defaultIndicator)));
-        scripts.put("Avatar", Avatar.fromGUI(     configs.getIndicator("AVATAR", defaultIndicator)));
+        scripts.put("Press" , Macro.endless(    configs.getIndicator("PRESS")));
+        scripts.put("Double", Macro.create(2,   configs.getIndicator("DOUBLE")));
+        scripts.put("Click" , Clicker.create(   configs.getIndicator("CLICK")));
+        scripts.put("Spam"  , Spam.fromGUI(s,   configs.getIndicator("SPAM")));
+        scripts.put("Avatar", Avatar.fromGUI(   configs.getIndicator("AVATAR")));
 
         Keyboard.init();
-        final HSGui gui = new HSGui(scripts);
-        gui.setTextFieldText(configs.getString("DEFAULT AVATAR", ""));
+        final HSGui gui = new HSGui(configs, scripts);
+        gui.setTextFieldText(configs.getString("DEFAULT AVATAR"));
+        gui.setScrollBarValue(configs.getInt("DEFAULT SPEED"));
 
         Scene scene = new Scene(gui, 700, 300);
+        primaryStage.setResizable(false);
         primaryStage.setScene(scene);
         primaryStage.setTitle("HackStyle by Style");
         primaryStage.setOnCloseRequest(event -> {
+            configs.updateFile();
             Keyboard.destroy();
             Platform.exit();
             System.exit(0);
