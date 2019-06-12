@@ -27,12 +27,16 @@ class Keyboard extends NativeKeyAdapter {
         LogManager.getLogManager().reset();
         Logger logger = Logger.getLogger(GlobalScreen.class.getPackage().getName());
         logger.setLevel(Level.OFF);
+        registerNativeHook();
+        GlobalScreen.addNativeKeyListener(KEYBOARD);
+    }
+
+    private static void registerNativeHook() {
         try {
             GlobalScreen.registerNativeHook();
         } catch (NativeHookException e) {
-            e.printStackTrace();
+            ErrorMessage.createErrorFile(e, "HackStyleError");
         }
-        GlobalScreen.addNativeKeyListener(KEYBOARD);
     }
 
     public static void addListener(Listener listener) {

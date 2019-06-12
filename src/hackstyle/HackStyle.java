@@ -9,6 +9,7 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.jnativehook.GlobalScreen;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -24,6 +25,8 @@ public class HackStyle extends Application {
 
         HSConfigs configs = new HSConfigs("HackStyleConfigs.txt");
 
+        Keyboard.init();
+
         try {
             configs.loadData();
         } catch (Exception e) {
@@ -37,8 +40,6 @@ public class HackStyle extends Application {
             configs.set("DEFAULT SPEED", "60");
             configs.updateFile();
         }
-
-        Keyboard.init();
 
         String s = configs.getString("SPLIT");
         Map<String, HaxballScript> scripts = new LinkedHashMap<>();
@@ -57,11 +58,15 @@ public class HackStyle extends Application {
         primaryStage.setScene(scene);
         primaryStage.setTitle("HackStyle by Style");
         primaryStage.setOnCloseRequest(event -> {
-            configs.updateFile();
             Keyboard.destroy();
             Platform.exit();
+            configs.updateFile();
             System.exit(0);
         });
         primaryStage.show();
+
+        if (!GlobalScreen.isNativeHookRegistered()) {
+            System.exit(0);
+        }
     }
 }

@@ -31,7 +31,7 @@ public class HSConfigs {
             }
             Collections.addAll(list, builder.toString().split("\n"));
         } catch (Exception e) {
-            createErrorFile(e);
+            ErrorMessage.createErrorFile(e, "HackStyleError");
             return;
         }
         for (String string : list) {
@@ -74,25 +74,9 @@ public class HSConfigs {
                     writer.write(property.getKey() + ";" + property.getValue() + "\n");
                 }
             } catch (IOException e) {
-                createErrorFile(e);
+                ErrorMessage.createErrorFile(e, "HackStyleError");
             }
         }
-    }
-
-    private void createErrorFile(Exception e) {
-        try (PrintWriter writer = new PrintWriter("HackStyleError.txt")) {
-            DateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-            writer.println("Date: " + format.format(new Date()));
-            writer.println("*******\nAn error occurred, please show me (Style) the error so I can fix it :}\n*******\n");
-
-            writer.println(e.getMessage());
-            for (StackTraceElement stackTraceElement : e.getStackTrace()) {
-                writer.println(stackTraceElement.toString());
-            }
-        } catch (Exception e1) {
-            e1.printStackTrace();
-        }
-        e.printStackTrace();
     }
 
 }
