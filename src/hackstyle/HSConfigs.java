@@ -1,9 +1,6 @@
 package hackstyle;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -20,18 +17,22 @@ public class HSConfigs {
         this.configs = new LinkedHashMap<>();
     }
 
-    public void loadData() {
+    public void loadData() throws IOException {
         List<String> list = new LinkedList<>();
-        try (FileReader reader = new FileReader(new File(fileName))) {
+        if (!new File(fileName).isFile()) {
+            throw new IOException("Could not find file " + fileName);
+        }
+        try (DataInputStream reader = new DataInputStream(new FileInputStream(fileName))) {
             int length;
-            final char[] array = new char[128];
+            final byte[] array = new byte[128];
             StringBuilder builder = new StringBuilder();
             while ((length = reader.read(array)) != -1) {
                 builder.append(new String(array, 0, length));
             }
             Collections.addAll(list, builder.toString().split("\n"));
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            createErrorFile(e);
+            return;
         }
         for (String string : list) {
             String[] s = string.split(";");
@@ -65,7 +66,7 @@ public class HSConfigs {
 
     public void updateFile() {
         if (changed) {
-            try (FileWriter writer = new FileWriter(new File(fileName), false)) {
+            try (PrintWriter writer = new PrintWriter(fileName)) {
                 DateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
                 writer.write("Last updated: " + format.format(new Date()) + "\n");
 
@@ -73,9 +74,25 @@ public class HSConfigs {
                     writer.write(property.getKey() + ";" + property.getValue() + "\n");
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                createErrorFile(e);
             }
         }
+    }
+
+    private void createErrorFile(Exception e) {
+        try (PrintWriter writer = new PrintWriter("HackStyleError.txt")) {
+            DateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            writer.println("Date: " + format.format(new Date()));
+            writer.println("*******\nAn error occurred, please show me (Style) the error so I can fix it :}\n*******\n");
+
+            writer.println(e.getMessage());
+            for (StackTraceElement stackTraceElement : e.getStackTrace()) {
+                writer.println(stackTraceElement.toString());
+            }
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+        e.printStackTrace();
     }
 
 }
