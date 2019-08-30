@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Haxball Terror
+// @name         HackStyle.js
 // @namespace    http://tampermonkey.net/
 // @version      1
 // @description  Terror every room in Haxball
