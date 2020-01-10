@@ -8,6 +8,15 @@
 // @grant        none
 // ==/UserScript==
 
+var style = window.style = {};
+
+style.nickname = "Style";
+
+style.avatars = "המהפכה".split("")
+style.destroy = "ఌ佹砕Ĉ⼈渻䬭॑⬺爂᰾ᜪ䉧ᬯ㍸᜖ᘬ慩㙲Ԑ瀩ञࠣ笋℉⨄㐷紪権ਛൽ㔙怅㬆癕⨴琐ḉ≼崪ᙻḻ⨂㈿爇䕦ᴵ灾㸏眮ቡᄸ܍礂海學㰌⬦ ѫ⼕ย⌑ḷ㠕ፃ㤕㌋␢眢砬ⵯ煾Ⱘ縂㉰匊㤀ह稫ᝈⴾㄫ㤒䉊؈ି㔞帱ॹࠚⰯἯ浸ἱᔞ፭ਮ娮ف㤮〕㱳⬗ᅷд甇ᜯ⩿ᤶⱁ戃 椏缁⼐獾⌱മ㈐ᵲ桨ԷᴑĿᑆ㨤ఴ⑸甈⨘Ѳ∯㘴䁔ح฾،ฌ"
+style.defaultAvatar = ":}";
+style.avatarIndex = 0;
+
 class Timer {
     constructor(callback, delay) {
         this.delay = delay;
@@ -41,13 +50,6 @@ class Timer {
 }
 
 var gameDocument = window.gameDocument = document.getElementsByClassName('gameframe')[0].contentWindow.document
-var style = window.style = {};
-
-style.avatars = ["|>", "<|"];
-style.avatars = ["▁", "▂", "▃", "▅", "▆", "▇", "█", "▇", "▆", "▅", "▃", "▂", "▁"];
-style.destroy = "ఌ佹砕Ĉ⼈渻䬭॑⬺爂᰾ᜪ䉧ᬯ㍸᜖ᘬ慩㙲Ԑ瀩ञࠣ笋℉⨄㐷紪権ਛൽ㔙怅㬆癕⨴琐ḉ≼崪ᙻḻ⨂㈿爇䕦ᴵ灾㸏眮ቡᄸ܍礂海學㰌⬦ ѫ⼕ย⌑ḷ㠕ፃ㤕㌋␢眢砬ⵯ煾Ⱘ縂㉰匊㤀ह稫ᝈⴾㄫ㤒䉊؈ି㔞帱ॹࠚⰯἯ浸ἱᔞ፭ਮ娮ف㤮〕㱳⬗ᅷд甇ᜯ⩿ᤶⱁ戃 椏缁⼐獾⌱മ㈐ᵲ桨ԷᴑĿᑆ㨤ఴ⑸甈⨘Ѳ∯㘴䁔ح฾،ฌ"
-style.defaultAvatar = "|>";
-style.avatarIndex = 0;
 
 style.avatarTimer = new Timer(() => {
     if (style.chatBox() !== gameDocument.activeElement) {
@@ -151,10 +153,7 @@ function copyLastMessage() {
     var text = children[children.length - 1].innerText
     var message = text.slice(text.indexOf(": ") + 2)
     var sender = text.slice(0, text.indexOf(": "))
-    if (sender != "Style" && text.indexOf(": ") != -1) {
-        message = message.replace(new RegExp("Style", 'g'), sender)
-        message = message.replace(new RegExp("style", 'g'), sender)
-        message = message.replace(new RegExp("סטייל", 'g'), sender)
+    if (sender != style.nickname && text.indexOf(": ") != -1) {
         style.write(message)
         style.send()
     }
