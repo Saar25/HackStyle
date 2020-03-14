@@ -64,7 +64,12 @@ public abstract class HaxballScript implements Script {
 
     @Override
     public void run() {
-        
+
+    }
+
+    @Override
+    public String name() {
+        return "null";
     }
 
     protected abstract void start();

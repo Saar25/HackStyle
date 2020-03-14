@@ -15,6 +15,6 @@ public class ClickAction implements ScriptAction {
 
     @Override
     public void act(State state) {
-        HaxballRobot.click((Integer) length.get());
+        HaxballRobot.click(Integer.parseInt(length.get()));
     }
 }

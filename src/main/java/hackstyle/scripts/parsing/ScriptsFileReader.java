@@ -1,4 +1,4 @@
-package hackstyle.scripts;
+package hackstyle.scripts.parsing;
 
 public class ScriptsFileReader {
 

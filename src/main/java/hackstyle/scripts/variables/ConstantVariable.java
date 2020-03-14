@@ -4,14 +4,14 @@ import hackstyle.scripts.ScriptVariable;
 
 public class ConstantVariable implements ScriptVariable {
 
-    private final Object value;
+    private final String value;
 
-    public ConstantVariable(Object value) {
+    public ConstantVariable(String value) {
         this.value = value;
     }
 
     @Override
-    public Object get() {
+    public String get() {
         return value;
     }
 }

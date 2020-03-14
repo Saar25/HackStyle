@@ -15,7 +15,7 @@ public class SleepAction implements ScriptAction {
     @Override
     public void act(State state) {
         try {
-            Thread.sleep((Long) variable.get());
+            Thread.sleep(Long.parseLong(variable.get()));
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

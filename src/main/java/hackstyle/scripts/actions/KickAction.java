@@ -15,6 +15,6 @@ public class KickAction implements ScriptAction {
 
     @Override
     public void act(State state) {
-        HaxballRobot.kick((Integer) length.get());
+        HaxballRobot.kick(Integer.parseInt(length.get()));
     }
 }
