@@ -1,0 +1,8 @@
+Date: 2019/06/12 18:08:48
+*******
+An error occurred, please show me (Style) the error so I can fix it :}
+*******
+
+Failed to register low level windows hook.
+org.jnativehook.GlobalScreen$NativeHookThread.enable(Native Method)
+org.jnativehook.GlobalScreen$NativeHookThread.run(Unknown Source)
