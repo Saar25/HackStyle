@@ -7,16 +7,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27950f32-c0a8-4f23-afb7-4f45ddf828f0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/HackStyleScripts.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/Script.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/ScriptAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/ScriptVariable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/ScriptsFileParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/ScriptsFileReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/State.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/actions/SleepAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/variables/ConstantVariable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/Validator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/actions/ClickAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/actions/KickAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/exceptions/InvalidScriptCodeException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/exceptions/InvalidScriptIndicatorException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/exceptions/ScriptParsingException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/ScriptsFileParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/ScriptsFileParser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,10 +154,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="392" y="89" key="#Project_Structure/0.0.1600.860@0.0.1600.860" timestamp="1584187668676" />
-    <state x="605" y="147" key="#com.intellij.ide.util.MemberChooser" timestamp="1584188755346">
+    <state x="605" y="147" key="#com.intellij.ide.util.MemberChooser" timestamp="1584190427557">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="605" y="147" key="#com.intellij.ide.util.MemberChooser/0.0.1600.860@0.0.1600.860" timestamp="1584188755346" />
+    <state x="605" y="147" key="#com.intellij.ide.util.MemberChooser/0.0.1600.860@0.0.1600.860" timestamp="1584190427557" />
     <state x="523" y="120" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1584187530184">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
