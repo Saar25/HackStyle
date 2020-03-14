@@ -1,4 +1,4 @@
-package hackstyle;
+package hackstyle.keyboard;
 
 import org.jnativehook.keyboard.NativeKeyEvent;
 

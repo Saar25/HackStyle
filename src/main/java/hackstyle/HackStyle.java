@@ -1,6 +1,7 @@
 package hackstyle;
 
 import hackstyle.gui.HSGui;
+import hackstyle.keyboard.Keyboard;
 import hackstyle.scripts.Avatar;
 import hackstyle.scripts.Clicker;
 import hackstyle.scripts.Macro;

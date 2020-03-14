@@ -7,13 +7,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27950f32-c0a8-4f23-afb7-4f45ddf828f0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/Validator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/actions/ClickAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/actions/KickAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/exceptions/InvalidScriptCodeException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/exceptions/InvalidScriptIndicatorException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/exceptions/ScriptParsingException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Dorit_t.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/hackstyle/keyboard/EventListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/hackstyle/keyboard/KeyboardListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/hackstyle/keyboard/OnAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hackstyle/HSConfigs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hackstyle/HSConfigs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hackstyle/HackStyle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hackstyle/HackStyle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hackstyle/HaxballScript.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hackstyle/HaxballScript.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hackstyle/Keyboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hackstyle/keyboard/Keyboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hackstyle/KeyboardUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hackstyle/keyboard/KeyboardUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/ScriptsFileParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/ScriptsFileParser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,6 +60,7 @@
     <option name="sortByType" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/hackstyle/gui" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.14746094" />
@@ -82,7 +86,7 @@
       <module name="HackStyle" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="hackstyle.*" />
+          <option name="PATTERN" value="hackstyle.keyboard.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>

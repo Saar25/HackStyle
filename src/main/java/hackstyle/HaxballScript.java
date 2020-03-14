@@ -1,34 +1,45 @@
 package hackstyle;
 
 import hackstyle.gui.HSGui;
+import hackstyle.keyboard.Keyboard;
+import hackstyle.keyboard.KeyboardUtils;
+import hackstyle.scripts.Script;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public abstract class HaxballScript {
+public abstract class HaxballScript implements Script {
 
-    private static final ExecutorService EXECUTOR = Executors.newCachedThreadPool();
+    private static final ExecutorService EXECUTOR = Executors.newFixedThreadPool(50);
+
+    private final int indicator;
 
     private boolean running = false;
     private boolean active = false;
 
     protected HaxballScript(int indicator) {
-        Keyboard.addListener((key, isDown) -> {
-            if (!active || key != indicator) {
-                return;
-            }
-            if (!running && isDown) {
-                running = true;
+        this.indicator = indicator;
+        this.registerToKeyboard();
+    }
+
+    private void registerToKeyboard() {
+        Keyboard.onKeyPress(indicator()).perform(event -> {
+            if (!isRunning() && active) {
+                this.setRunning(true);
                 EXECUTOR.submit(this::start);
-            } else if (running) {
-                running = false;
-                stop();
+            }
+        });
+        Keyboard.onKeyRelease(indicator()).perform(event -> {
+            if (this.isRunning()) {
+                this.setRunning(false);
+                this.stop();
             }
         });
     }
 
-    protected HaxballScript(char indicator) {
-        this(KeyboardUtils.parseCharToKey(indicator));
+    @Override
+    public int indicator() {
+        return indicator;
     }
 
     public void setActive(boolean active) {
@@ -45,6 +56,15 @@ public abstract class HaxballScript {
 
     protected boolean isRunning() {
         return running;
+    }
+
+    protected void setRunning(boolean running) {
+        this.running = running;
+    }
+
+    @Override
+    public void run() {
+        
     }
 
     protected abstract void start();

@@ -1,5 +1,6 @@
-package hackstyle;
+package hackstyle.keyboard;
 
+import hackstyle.ErrorMessage;
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
 import org.jnativehook.keyboard.NativeKeyAdapter;
@@ -11,12 +12,12 @@ import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
-class Keyboard extends NativeKeyAdapter {
+public class Keyboard extends NativeKeyAdapter {
 
     private static final Keyboard KEYBOARD = new Keyboard();
 
     private final List<Integer> pressedKeys;
-    private final List<Listener> listeners;
+    private final List<EventListener<NativeKeyEvent>> listeners;
 
     private Keyboard() {
         this.pressedKeys = new ArrayList<>();
@@ -39,33 +40,49 @@ class Keyboard extends NativeKeyAdapter {
         }
     }
 
-    public static void addListener(Listener listener) {
+    public static void addListener(EventListener<NativeKeyEvent> listener) {
         KEYBOARD.listeners.add(listener);
+    }
+
+    public static OnAction<NativeKeyEvent> onKeyPress(int key) {
+        return listener -> Keyboard.addListener(event -> {
+            if (event.getKeyCode() == key && isPressed(key)) {
+                listener.listen(event);
+            }
+        });
+    }
+
+    public static OnAction<NativeKeyEvent> onKeyRelease(int key) {
+        return listener -> Keyboard.addListener(event -> {
+            if (event.getKeyCode() == key && !isPressed(key)) {
+                listener.listen(event);
+            }
+        });
+    }
+
+    public static boolean isPressed(Integer key) {
+        return KEYBOARD.pressedKeys.contains(key);
+    }
+
+    private void notifyListeners(NativeKeyEvent e) {
+        listeners.forEach(listener -> listener.listen(e));
     }
 
     @Override
     public void nativeKeyPressed(NativeKeyEvent e) {
-        int keyCode = e.getKeyCode();
-        if (pressedKeys.contains(keyCode)) {
-            return;
-        } else {
+        final int keyCode = e.getKeyCode();
+        if (!pressedKeys.contains(keyCode)) {
             pressedKeys.add(keyCode);
-        }
-        for (Listener listener : listeners) {
-            listener.handle(keyCode, true);
+            notifyListeners(e);
         }
     }
 
     @Override
     public void nativeKeyReleased(NativeKeyEvent e) {
-        int keyCode = e.getKeyCode();
-        if (!pressedKeys.contains(keyCode)) {
-            return;
-        } else {
+        final int keyCode = e.getKeyCode();
+        if (pressedKeys.contains(keyCode)) {
             pressedKeys.remove((Integer) keyCode);
-        }
-        for (Listener listener : listeners) {
-            listener.handle(keyCode, false);
+            notifyListeners(e);
         }
     }
 
@@ -75,11 +92,5 @@ class Keyboard extends NativeKeyAdapter {
         } catch (NativeHookException e) {
             e.printStackTrace();
         }
-    }
-
-    public interface Listener {
-
-        void handle(int key, boolean isDown);
-
     }
 }

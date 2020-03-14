@@ -1,5 +1,7 @@
 package hackstyle;
 
+import hackstyle.keyboard.KeyboardUtils;
+
 import java.io.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

@@ -36,6 +36,6 @@ public class ScriptsFileParser {
         final String code = split[1];
         Validator.validateCode(code);
 
-
+        return null;
     }
 }
