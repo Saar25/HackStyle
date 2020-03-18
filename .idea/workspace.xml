@@ -7,14 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27950f32-c0a8-4f23-afb7-4f45ddf828f0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Dorit_t.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Dorit_t.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/variables/ScrollBarVariable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/variables/TextBarVariable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HackStyleScripts.txt" beforeDir="false" afterPath="$PROJECT_DIR$/HackStyleScripts.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hackstyle/HackStyle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hackstyle/HackStyle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hackstyle/keyboard/Keyboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hackstyle/keyboard/Keyboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/ActiveScripts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/ActiveScripts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/Script.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/Script.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/ScriptImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/ScriptImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hackstyle/gui/HSGui.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hackstyle/gui/MainTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hackstyle/gui/MainTab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/actions/SleepAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/actions/SleepAction.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,10 +182,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="392" y="89" key="#Project_Structure/0.0.1600.860@0.0.1600.860" timestamp="1584187668676" />
-    <state x="605" y="147" key="#com.intellij.ide.util.MemberChooser" timestamp="1584569387817">
+    <state x="605" y="147" key="#com.intellij.ide.util.MemberChooser" timestamp="1584571541180">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="605" y="147" key="#com.intellij.ide.util.MemberChooser/0.0.1600.860@0.0.1600.860" timestamp="1584569387817" />
+    <state x="605" y="147" key="#com.intellij.ide.util.MemberChooser/0.0.1600.860@0.0.1600.860" timestamp="1584571541180" />
     <state x="523" y="120" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1584187530184">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -207,46 +206,46 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="436" y="24" key="CommitChangelistDialog2/0.0.1600.860@0.0.1600.860" timestamp="1584565824731" />
-    <state width="1557" height="213" key="GridCell.Tab.0.bottom" timestamp="1584570471213">
+    <state width="1557" height="213" key="GridCell.Tab.0.bottom" timestamp="1584572203600">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="213" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1584570471213" />
-    <state width="1557" height="213" key="GridCell.Tab.0.center" timestamp="1584570471213">
+    <state width="1557" height="213" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1584572203600" />
+    <state width="1557" height="213" key="GridCell.Tab.0.center" timestamp="1584572203600">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="213" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1584570471213" />
-    <state width="1557" height="213" key="GridCell.Tab.0.left" timestamp="1584570471213">
+    <state width="1557" height="213" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1584572203600" />
+    <state width="1557" height="213" key="GridCell.Tab.0.left" timestamp="1584572203600">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="213" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1584570471213" />
-    <state width="1557" height="213" key="GridCell.Tab.0.right" timestamp="1584570471213">
+    <state width="1557" height="213" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1584572203600" />
+    <state width="1557" height="213" key="GridCell.Tab.0.right" timestamp="1584572203600">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="213" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1584570471213" />
-    <state width="1557" height="275" key="GridCell.Tab.1.bottom" timestamp="1584566634306">
+    <state width="1557" height="213" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1584572203600" />
+    <state width="1557" height="275" key="GridCell.Tab.1.bottom" timestamp="1584570868291">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="275" key="GridCell.Tab.1.bottom/0.0.1600.860@0.0.1600.860" timestamp="1584566634306" />
-    <state width="1557" height="275" key="GridCell.Tab.1.center" timestamp="1584566634306">
+    <state width="1557" height="275" key="GridCell.Tab.1.bottom/0.0.1600.860@0.0.1600.860" timestamp="1584570868291" />
+    <state width="1557" height="275" key="GridCell.Tab.1.center" timestamp="1584570868291">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="275" key="GridCell.Tab.1.center/0.0.1600.860@0.0.1600.860" timestamp="1584566634306" />
-    <state width="1557" height="275" key="GridCell.Tab.1.left" timestamp="1584566634306">
+    <state width="1557" height="275" key="GridCell.Tab.1.center/0.0.1600.860@0.0.1600.860" timestamp="1584570868291" />
+    <state width="1557" height="275" key="GridCell.Tab.1.left" timestamp="1584570868291">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="275" key="GridCell.Tab.1.left/0.0.1600.860@0.0.1600.860" timestamp="1584566634306" />
-    <state width="1557" height="275" key="GridCell.Tab.1.right" timestamp="1584566634306">
+    <state width="1557" height="275" key="GridCell.Tab.1.left/0.0.1600.860@0.0.1600.860" timestamp="1584570868291" />
+    <state width="1557" height="275" key="GridCell.Tab.1.right" timestamp="1584570868291">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="275" key="GridCell.Tab.1.right/0.0.1600.860@0.0.1600.860" timestamp="1584566634306" />
+    <state width="1557" height="275" key="GridCell.Tab.1.right/0.0.1600.860@0.0.1600.860" timestamp="1584570868291" />
     <state x="280" y="5" key="SettingsEditor" timestamp="1584187637676">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="280" y="5" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1584187637676" />
-    <state x="609" y="347" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584570463824">
+    <state x="609" y="347" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584571618085">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="609" y="347" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1600.860@0.0.1600.860" timestamp="1584570463824" />
+    <state x="609" y="347" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1600.860@0.0.1600.860" timestamp="1584571618085" />
     <state x="92" y="92" width="1416" height="676" key="dock-window-1" timestamp="1584198193445">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -263,6 +262,14 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="463" y="180" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1584189158865" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="state.getScriptIndex()" />
+        <watch expression="running" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />

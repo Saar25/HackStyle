@@ -1,6 +1,7 @@
 package hackstyle;
 
-import hackstyle.gui.HSGui;
+import hackstyle.gui.InternetTab;
+import hackstyle.gui.MainTab;
 import hackstyle.keyboard.Keyboard;
 import hackstyle.keyboard.KeyboardUtils;
 import hackstyle.scripts.Script;
@@ -9,10 +10,12 @@ import hackstyle.scripts.exceptions.ScriptParsingException;
 import hackstyle.scripts.parsing.ScriptActionParser;
 import hackstyle.scripts.parsing.ScriptVariableParser;
 import hackstyle.scripts.parsing.ScriptsFileParser;
-import hackstyle.scripts.variables.ConstantVariable;
+import hackstyle.scripts.variables.ScrollBarVariable;
+import hackstyle.scripts.variables.TextBarVariable;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
+import javafx.scene.control.TabPane;
 import javafx.stage.Stage;
 import org.jnativehook.GlobalScreen;
 
@@ -30,21 +33,26 @@ public class HackStyle extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+
+        final TabPane gui = new TabPane();
+        final MainTab mainTab = new MainTab();
+        mainTab.getTextField().setText("|><|");
+        mainTab.getScrollBar().setValue(25);
+
+        gui.getTabs().add(mainTab);
+        gui.getTabs().add(new InternetTab());
+
         final ScriptActionParser actionParser = createActionParser();
-
         final ScriptVariableParser variableParser = new ScriptVariableParser();
-        variableParser.addScriptVariableCreator("SLIDER", () -> new ConstantVariable("FUCK YOU ALL"));
-        variableParser.addScriptVariableCreator("TEXTBAR", () -> new ConstantVariable("FUCK YOU TOO"));
-
+        variableParser.addScriptVariableCreator("SLIDER", () -> new ScrollBarVariable(mainTab.getScrollBar()));
+        variableParser.addScriptVariableCreator("TEXTBAR", () -> new TextBarVariable(mainTab.getTextField()));
         final List<Script> scripts = readScripts(actionParser, variableParser);
 
-        final HSGui gui = new HSGui(scripts);
-        gui.setTextFieldText("|><|");
-        gui.setScrollBarValue(25);
+        scripts.forEach(mainTab::addScript);
 
         Keyboard.init();
         Keyboard.onKeyPress().perform(event -> {
-            for (Script script : gui.getActiveScripts().get()) {
+            for (Script script : mainTab.getActiveScripts().get()) {
                 if (KeyboardUtils.parseCharToKey(script.indicator()) == event.getKeyCode()) {
                     script.start();
                 }
@@ -53,7 +61,7 @@ public class HackStyle extends Application {
         Keyboard.onKeyRelease().perform(event -> {
             for (Script script : scripts) {
                 if (script.indicator() == event.getKeyCode()) {
-                    script.start();
+                    script.stop();
                 }
             }
         });
