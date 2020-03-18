@@ -10,9 +10,9 @@ public class EndLoopAction implements ScriptAction {
         final int thisIndex = state.getScriptActions().indexOf(this);
         boolean found = false;
 
-        for (int i = thisIndex + 1; !found && i < state.getScriptActions().size(); i++) {
+        for (int i = thisIndex - 1; !found && i >= 0; i--) {
             final ScriptAction scriptAction = state.getScriptActions().get(i);
-            if (scriptAction instanceof EndLoopAction) {
+            if (scriptAction instanceof LoopAction) {
                 state.setScriptIndex(i);
                 found = true;
             }

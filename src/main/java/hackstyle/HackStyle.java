@@ -60,7 +60,7 @@ public class HackStyle extends Application {
         });
         Keyboard.onKeyRelease().perform(event -> {
             for (Script script : scripts) {
-                if (script.indicator() == event.getKeyCode()) {
+                if (KeyboardUtils.parseCharToKey(script.indicator()) == event.getKeyCode()) {
                     script.stop();
                 }
             }
