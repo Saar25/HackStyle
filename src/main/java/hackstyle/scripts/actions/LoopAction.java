@@ -6,7 +6,8 @@ import hackstyle.scripts.State;
 
 public class LoopAction implements ScriptAction {
 
-    private int loops;
+    private final int loops;
+    private int index;
 
     public LoopAction(ScriptVariable loops) {
         this.loops = Integer.parseInt(loops.get());
@@ -15,7 +16,7 @@ public class LoopAction implements ScriptAction {
     @Override
     public State act(State state) {
         boolean found = false;
-        if (loops == 0) {
+        if (this.loops == this.index) {
             final int thisIndex = state.getScriptActions().indexOf(this);
             for (int i = thisIndex + 1; !found && i < state.getScriptActions().size(); i--) {
                 final ScriptAction scriptAction = state.getScriptActions().get(i);
@@ -25,8 +26,12 @@ public class LoopAction implements ScriptAction {
                 }
             }
         }
-        loops--;
+        this.index++;
         return found ? state : state.next();
     }
 
+    @Override
+    public void reset() {
+        this.index = 0;
+    }
 }
