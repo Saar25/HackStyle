@@ -44,7 +44,7 @@ public class MainTab extends Tab {
 
         final Label label = new Label("Executions per second: " + scrollBar.getValue());
         scrollBar.valueProperty().addListener(e -> label.setText(
-                "Executions per second: " + scrollBar.getValue()));
+                "Executions per second: " + (int) scrollBar.getValue()));
         label.setTextFill(Color.WHITE);
 
         mainBox.getChildren().addAll(checkBoxes, textField, scrollBar, label);
