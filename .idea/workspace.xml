@@ -7,14 +7,88 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27950f32-c0a8-4f23-afb7-4f45ddf828f0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/actions/AvatarAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/actions/AvatarsAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/actions/WriteAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HackStyleScripts.txt" beforeDir="false" afterPath="$PROJECT_DIR$/HackStyleScripts.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/actions/WhileAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/actions/WhileAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/parsing/ScriptsFileParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/parsing/ScriptsFileParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/parsing/ScriptsFileParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hackstyle/scripts/parsing/ScriptsFileParser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/HackStyle/HackStyle.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/HackStyle_jar/HackStyleConfigs.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/HackStyle_jar/HackStyleError.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/ErrorMessage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/HSConfigs.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/HackStyle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/HaxballRobot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/HaxballScript.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/Keyboard$Listener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/Keyboard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/KeyboardUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/gui/HSGui.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/gui/InternetTab.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/gui/MainTab.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/gui/ScriptCheckBox.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/gui/SettingsTab.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/internet/Connection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/internet/Netstat.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/scripts/Avatar$Loader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/scripts/Avatar.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/scripts/Clicker.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/scripts/Macro.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/scripts/Spam$Loader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/scripts/Spam.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/HackStyle-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/HackStyle.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/ErrorMessage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/FileReader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/HSConfigs.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/HackStyle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/HaxballRobot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/HaxballScript.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/gui/HSGui.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/gui/InternetTab.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/gui/MainTab.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/gui/ScriptCheckBox.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/gui/SettingsTab.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/internet/Connection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/internet/Netstat.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/keyboard/EventListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/keyboard/Keyboard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/keyboard/KeyboardUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/keyboard/OnAction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/Avatar$Loader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/Avatar.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/Clicker.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/Macro.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/Script.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/ScriptAction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/ScriptActionCreator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/ScriptCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/ScriptImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/ScriptVariable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/ScriptVariableCreator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/Spam$Loader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/Spam.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/State.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/Validator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/VariableStream.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/actions/AvatarAction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/actions/AvatarsAction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/actions/ClickAction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/actions/EndLoopAction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/actions/KickAction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/actions/LoopAction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/actions/SleepAction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/actions/WhileAction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/actions/WriteAction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/exceptions/InvalidScriptActionException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/exceptions/InvalidScriptCodeException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/exceptions/InvalidScriptIndicatorException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/exceptions/ScriptParsingException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/parsing/ScriptActionParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/parsing/ScriptVariableParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/parsing/ScriptsFileParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/parsing/ScriptsFileReader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/variables/ConstantVariable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +239,18 @@
       <option name="presentableId" value="Default" />
       <updated>1557329365049</updated>
     </task>
+    <task id="LOCAL‎00001" summary="Added actions">
+      <created>1584565826403</created>
+      <option name="number" value="LOCAL‎00001" />
+      <option name="presentableId" value="LOCAL‎00001" />
+      <updated>1584565826403</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added actions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added actions" />
   </component>
   <component name="WindowStateProjectService">
     <state x="392" y="89" key="#Project_Structure" timestamp="1584187668676">
