@@ -26,4 +26,10 @@ public class AvatarsAction implements ScriptAction {
                 ? avatar.get().substring(index, index + 2)
                 : avatar.get().charAt(index) + "";
     }
+
+    @Override
+    public void reset() {
+        this.index = 0;
+        HaxballRobot.setAvatar(getAvatar());
+    }
 }
