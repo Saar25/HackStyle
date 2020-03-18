@@ -89,6 +89,7 @@ public class HackStyle extends Application {
             return scriptsFileParser.parse(code);
         } catch (ScriptParsingException | IOException e) {
             e.printStackTrace();
+            ErrorMessage.createErrorFile(e);
         }
         return Collections.emptyList();
     }

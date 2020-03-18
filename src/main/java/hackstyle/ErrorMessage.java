@@ -11,8 +11,8 @@ public final class ErrorMessage {
 
     }
 
-    public static void createErrorFile(Exception e, String fileName) {
-        try (PrintWriter writer = new PrintWriter(fileName + ".txt")) {
+    public static void createErrorFile(Exception e) {
+        try (PrintWriter writer = new PrintWriter("HackStyleError.txt")) {
             DateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
             writer.println("Date: " + format.format(new Date()));
             writer.println("*******\nAn error occurred, please show me (Style) the error so I can fix it :}\n*******\n");

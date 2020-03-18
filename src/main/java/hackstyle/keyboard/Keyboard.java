@@ -36,7 +36,7 @@ public class Keyboard extends NativeKeyAdapter {
         try {
             GlobalScreen.registerNativeHook();
         } catch (NativeHookException e) {
-            ErrorMessage.createErrorFile(e, "HackStyleError");
+            ErrorMessage.createErrorFile(e);
         }
     }
 
