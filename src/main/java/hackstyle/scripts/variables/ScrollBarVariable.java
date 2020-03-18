@@ -13,7 +13,7 @@ public class ScrollBarVariable implements ScriptVariable {
 
     @Override
     public String get() {
-        final double value = scrollBar.getValue();
+        final double value = 1000 / scrollBar.getValue();
         return String.valueOf((int) value);
     }
 }
