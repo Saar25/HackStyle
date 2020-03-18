@@ -14,7 +14,8 @@ public class AvatarAction implements ScriptAction {
     }
 
     @Override
-    public void act(State state) {
+    public State act(State state) {
         HaxballRobot.setAvatar(avatar.get());
+        return state.next();
     }
 }

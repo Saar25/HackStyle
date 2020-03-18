@@ -37,4 +37,9 @@ public class State {
     public void setRunning(boolean running) {
         this.running = running;
     }
+
+    public State next() {
+        nextScriptIndex();
+        return this;
+    }
 }

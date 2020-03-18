@@ -13,11 +13,12 @@ public class SleepAction implements ScriptAction {
     }
 
     @Override
-    public void act(State state) {
+    public State act(State state) {
         try {
             Thread.sleep(Integer.parseInt(variable.get()));
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        return state.next();
     }
 }

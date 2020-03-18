@@ -6,7 +6,7 @@ import hackstyle.scripts.State;
 public class EndLoopAction implements ScriptAction {
 
     @Override
-    public void act(State state) {
+    public State act(State state) {
         final int thisIndex = state.getScriptActions().indexOf(this);
         boolean found = false;
 
@@ -17,5 +17,6 @@ public class EndLoopAction implements ScriptAction {
                 found = true;
             }
         }
+        return found ? state.next() : state;
     }
 }

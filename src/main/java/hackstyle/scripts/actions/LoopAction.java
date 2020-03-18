@@ -13,10 +13,10 @@ public class LoopAction implements ScriptAction {
     }
 
     @Override
-    public void act(State state) {
+    public State act(State state) {
+        boolean found = false;
         if (loops == 0) {
             final int thisIndex = state.getScriptActions().indexOf(this);
-            boolean found = false;
             for (int i = thisIndex - 1; !found && i >= 0; i--) {
                 final ScriptAction scriptAction = state.getScriptActions().get(i);
                 if (scriptAction instanceof LoopAction) {
@@ -25,6 +25,7 @@ public class LoopAction implements ScriptAction {
                 }
             }
         }
+        return found ? state.next() : state;
     }
 
 }

@@ -35,13 +35,13 @@ public class ScriptImpl implements Script {
         if (!this.running) {
             this.running = true;
 
-            final State state = new State(scriptActions);
-
             executor.submit(() -> {
+                State state = new State(scriptActions);
+
                 while (state.getScriptIndex() < scriptActions.size() && running) {
-                    scriptActions.get(state.getScriptIndex()).act(state);
+                    final ScriptAction action = scriptActions.get(state.getScriptIndex());
+                    state = action.act(state);
                     state.setRunning(running);
-                    state.nextScriptIndex();
                 }
             });
         }

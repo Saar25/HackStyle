@@ -14,7 +14,8 @@ public class WriteAction implements ScriptAction {
     }
 
     @Override
-    public void act(State state) {
+    public State act(State state) {
         HaxballRobot.sendToChat(message.get());
+        return state.next();
     }
 }

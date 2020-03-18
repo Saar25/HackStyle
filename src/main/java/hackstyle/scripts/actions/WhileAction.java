@@ -15,7 +15,7 @@ public class WhileAction implements ScriptAction {
     }
 
     @Override
-    public void act(State state) {
+    public State act(State state) {
         if (variable.get().equals(TRUE)) {
             final int thisIndex = state.getScriptActions().indexOf(this);
             boolean found = false;
@@ -27,5 +27,6 @@ public class WhileAction implements ScriptAction {
                 }
             }
         }
+        return state.next();
     }
 }

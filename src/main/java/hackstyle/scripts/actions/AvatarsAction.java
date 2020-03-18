@@ -15,9 +15,10 @@ public class AvatarsAction implements ScriptAction {
     }
 
     @Override
-    public void act(State state) {
+    public State act(State state) {
         HaxballRobot.setAvatar(getAvatar());
         index = index + 2 < avatar.get().length() ? index + 2 : 0;
+        return state.next();
     }
 
     private String getAvatar() {
