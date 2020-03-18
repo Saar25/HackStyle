@@ -17,6 +17,6 @@ public class EndLoopAction implements ScriptAction {
                 found = true;
             }
         }
-        return found ? state.next() : state;
+        return found ? state : state.next();
     }
 }

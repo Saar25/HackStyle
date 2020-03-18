@@ -40,7 +40,7 @@ public class ScriptImpl implements Script {
 
                 while (state.getScriptIndex() < scriptActions.size() && running) {
                     final ScriptAction action = scriptActions.get(state.getScriptIndex());
-                    state = action.act(state);
+                         state = action.act(state);
                     state.setRunning(running);
                 }
             });
