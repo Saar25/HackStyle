@@ -6,6 +6,8 @@ import hackstyle.scripts.State;
 
 public class WhileAction implements ScriptAction {
 
+    private static final String TRUE = "1";
+
     private final ScriptVariable variable;
 
     public WhileAction(ScriptVariable variable) {
@@ -14,7 +16,7 @@ public class WhileAction implements ScriptAction {
 
     @Override
     public void act(State state) {
-        if (variable.get()) {
+        if (variable.get().equals(TRUE)) {
             final int thisIndex = state.getScriptActions().indexOf(this);
             boolean found = false;
             for (int i = thisIndex - 1; !found && i >= 0; i--) {
