@@ -52,9 +52,25 @@ public class Keyboard extends NativeKeyAdapter {
         });
     }
 
+    public static OnAction<NativeKeyEvent> onKeyPress() {
+        return listener -> Keyboard.addListener(event -> {
+            if (isPressed(event.getKeyCode())) {
+                listener.listen(event);
+            }
+        });
+    }
+
     public static OnAction<NativeKeyEvent> onKeyRelease(int key) {
         return listener -> Keyboard.addListener(event -> {
             if (event.getKeyCode() == key && !isPressed(key)) {
+                listener.listen(event);
+            }
+        });
+    }
+
+    public static OnAction<NativeKeyEvent> onKeyRelease() {
+        return listener -> Keyboard.addListener(event -> {
+            if (!isPressed(event.getKeyCode())) {
                 listener.listen(event);
             }
         });

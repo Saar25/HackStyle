@@ -12,9 +12,9 @@ public class ActiveScripts {
     }
 
     public void setActive(Script script, boolean active) {
-        if (active && get().contains(script)) {
+        if (active && !get().contains(script)) {
             this.activeScripts.add(script);
-        } else if (!get().contains(script)) {
+        } else if (get().contains(script)) {
             this.activeScripts.remove(script);
         }
     }

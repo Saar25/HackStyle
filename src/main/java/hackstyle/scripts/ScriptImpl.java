@@ -9,12 +9,12 @@ public class ScriptImpl implements Script {
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
 
     private final String name;
-    private final int indicator;
+    private final char indicator;
     private final List<ScriptAction> scriptActions;
 
     private boolean running = false;
 
-    public ScriptImpl(String name, int indicator, List<ScriptAction> scriptActions) {
+    public ScriptImpl(String name, char indicator, List<ScriptAction> scriptActions) {
         this.name = name;
         this.indicator = indicator;
         this.scriptActions = scriptActions;
@@ -26,23 +26,25 @@ public class ScriptImpl implements Script {
     }
 
     @Override
-    public int indicator() {
+    public char indicator() {
         return indicator;
     }
 
     @Override
     public void start() {
-        this.running = true;
+        if (!this.running) {
+            this.running = true;
 
-        final State state = new State(scriptActions);
+            final State state = new State(scriptActions);
 
-        executor.submit(() -> {
-            while (state.getScriptIndex() < scriptActions.size() && running) {
-                scriptActions.get(state.getScriptIndex()).act(state);
-                state.setRunning(running);
-                state.nextScriptIndex();
-            }
-        });
+            executor.submit(() -> {
+                while (state.getScriptIndex() < scriptActions.size() && running) {
+                    scriptActions.get(state.getScriptIndex()).act(state);
+                    state.setRunning(running);
+                    state.nextScriptIndex();
+                }
+            });
+        }
     }
 
     @Override
