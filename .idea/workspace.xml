@@ -86,7 +86,7 @@
       <command value="java -jar hackstyle.internet.TryDoingIt" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.ScriptsFileParser">
+  <component name="RunManager" selected="Application.HackStyle">
     <configuration name="HackStyle" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="hackstyle.HackStyle" />
       <module name="HackStyle" />
@@ -205,10 +205,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="484" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1600.860@0.0.1600.860" timestamp="1584565581588" />
-    <state x="530" y="177" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1584566623054">
+    <state x="530" y="177" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1584567663826">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="530" y="177" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1600.860@0.0.1600.860" timestamp="1584566623054" />
+    <state x="530" y="177" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1600.860@0.0.1600.860" timestamp="1584567663826" />
     <state x="436" y="24" key="CommitChangelistDialog2" timestamp="1584565824731">
       <screen x="0" y="0" width="1600" height="860" />
     </state>

@@ -56,7 +56,7 @@ public class HackStyle extends Application {
 
         Keyboard.init();
 
-        final HSGui gui = new HSGui(configs, scripts);
+        final HSGui gui = new HSGui(scripts);
         gui.setTextFieldText(configs.getString("DEFAULT AVATAR"));
         gui.setScrollBarValue(configs.getInt("DEFAULT SPEED"));
 
@@ -67,7 +67,6 @@ public class HackStyle extends Application {
         primaryStage.setOnCloseRequest(event -> {
             Keyboard.destroy();
             Platform.exit();
-            configs.updateFile();
             System.exit(0);
         });
         primaryStage.show();
