@@ -2,7 +2,6 @@ package hackstyle;
 
 import hackstyle.gui.HSGui;
 import hackstyle.keyboard.Keyboard;
-import hackstyle.keyboard.KeyboardUtils;
 import hackstyle.scripts.Script;
 
 import java.util.concurrent.ExecutorService;
@@ -26,7 +25,7 @@ public abstract class HaxballScript implements Script {
         Keyboard.onKeyPress(indicator()).perform(event -> {
             if (!isRunning() && active) {
                 this.setRunning(true);
-                EXECUTOR.submit(this::start);
+                EXECUTOR.submit(this::run);
             }
         });
         Keyboard.onKeyRelease(indicator()).perform(event -> {
@@ -64,7 +63,7 @@ public abstract class HaxballScript implements Script {
 
     @Override
     public void run() {
-
+        start();
     }
 
     @Override

@@ -7,88 +7,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27950f32-c0a8-4f23-afb7-4f45ddf828f0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/out/artifacts/HackStyle/HackStyle.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/HackStyle_jar/HackStyleConfigs.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/HackStyle_jar/HackStyleError.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/ErrorMessage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/HSConfigs.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/HackStyle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/HaxballRobot.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/HaxballScript.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/Keyboard$Listener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/Keyboard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/KeyboardUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/gui/HSGui.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/gui/InternetTab.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/gui/MainTab.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/gui/ScriptCheckBox.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/gui/SettingsTab.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/internet/Connection.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/internet/Netstat.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/scripts/Avatar$Loader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/scripts/Avatar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/scripts/Clicker.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/scripts/Macro.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/scripts/Spam$Loader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HackStyle/hackstyle/scripts/Spam.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/HackStyle-1.0-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/HackStyle.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/ErrorMessage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/FileReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/HSConfigs.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/HackStyle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/HaxballRobot.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/HaxballScript.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/gui/HSGui.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/gui/InternetTab.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/gui/MainTab.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/gui/ScriptCheckBox.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/gui/SettingsTab.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/internet/Connection.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/internet/Netstat.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/keyboard/EventListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/keyboard/Keyboard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/keyboard/KeyboardUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/keyboard/OnAction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/Avatar$Loader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/Avatar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/Clicker.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/Macro.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/Script.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/ScriptAction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/ScriptActionCreator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/ScriptCommand.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/ScriptImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/ScriptVariable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/ScriptVariableCreator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/Spam$Loader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/Spam.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/State.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/Validator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/VariableStream.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/actions/AvatarAction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/actions/AvatarsAction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/actions/ClickAction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/actions/EndLoopAction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/actions/KickAction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/actions/LoopAction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/actions/SleepAction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/actions/WhileAction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/actions/WriteAction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/exceptions/InvalidScriptActionException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/exceptions/InvalidScriptCodeException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/exceptions/InvalidScriptIndicatorException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/exceptions/ScriptParsingException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/parsing/ScriptActionParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/parsing/ScriptVariableParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/parsing/ScriptsFileParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/parsing/ScriptsFileReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hackstyle/scripts/variables/ConstantVariable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/ActiveScripts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HackStyleScripts.txt" beforeDir="false" afterPath="$PROJECT_DIR$/HackStyleScripts.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hackstyle/HackStyle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hackstyle/HackStyle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hackstyle/HaxballScript.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hackstyle/HaxballScript.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hackstyle/gui/HSGui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hackstyle/gui/HSGui.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hackstyle/gui/MainTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hackstyle/gui/MainTab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hackstyle/gui/ScriptCheckBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hackstyle/gui/ScriptCheckBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/Avatar.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/Clicker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/Macro.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/ScriptImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/ScriptImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/Spam.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/parsing/ScriptsFileParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hackstyle/scripts/parsing/ScriptsFileParser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -257,10 +189,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="392" y="89" key="#Project_Structure/0.0.1600.860@0.0.1600.860" timestamp="1584187668676" />
-    <state x="605" y="147" key="#com.intellij.ide.util.MemberChooser" timestamp="1584565459090">
+    <state x="605" y="147" key="#com.intellij.ide.util.MemberChooser" timestamp="1584567153552">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="605" y="147" key="#com.intellij.ide.util.MemberChooser/0.0.1600.860@0.0.1600.860" timestamp="1584565459090" />
+    <state x="605" y="147" key="#com.intellij.ide.util.MemberChooser/0.0.1600.860@0.0.1600.860" timestamp="1584567153552" />
     <state x="523" y="120" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1584187530184">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -273,42 +205,46 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="484" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1600.860@0.0.1600.860" timestamp="1584565581588" />
+    <state x="530" y="177" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1584566623054">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="530" y="177" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1600.860@0.0.1600.860" timestamp="1584566623054" />
     <state x="436" y="24" key="CommitChangelistDialog2" timestamp="1584565824731">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="436" y="24" key="CommitChangelistDialog2/0.0.1600.860@0.0.1600.860" timestamp="1584565824731" />
-    <state width="1557" height="213" key="GridCell.Tab.0.bottom" timestamp="1584565833629">
+    <state width="1557" height="275" key="GridCell.Tab.0.bottom" timestamp="1584566634306">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="213" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1584565833629" />
-    <state width="1557" height="213" key="GridCell.Tab.0.center" timestamp="1584565833629">
+    <state width="1557" height="275" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1584566634306" />
+    <state width="1557" height="275" key="GridCell.Tab.0.center" timestamp="1584566634306">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="213" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1584565833629" />
-    <state width="1557" height="213" key="GridCell.Tab.0.left" timestamp="1584565833629">
+    <state width="1557" height="275" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1584566634306" />
+    <state width="1557" height="275" key="GridCell.Tab.0.left" timestamp="1584566634306">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="213" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1584565833629" />
-    <state width="1557" height="213" key="GridCell.Tab.0.right" timestamp="1584565833629">
+    <state width="1557" height="275" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1584566634306" />
+    <state width="1557" height="275" key="GridCell.Tab.0.right" timestamp="1584566634306">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="213" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1584565833629" />
-    <state width="1557" height="275" key="GridCell.Tab.1.bottom" timestamp="1584197282735">
+    <state width="1557" height="275" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1584566634306" />
+    <state width="1557" height="275" key="GridCell.Tab.1.bottom" timestamp="1584566634306">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="275" key="GridCell.Tab.1.bottom/0.0.1600.860@0.0.1600.860" timestamp="1584197282735" />
-    <state width="1557" height="275" key="GridCell.Tab.1.center" timestamp="1584197282735">
+    <state width="1557" height="275" key="GridCell.Tab.1.bottom/0.0.1600.860@0.0.1600.860" timestamp="1584566634306" />
+    <state width="1557" height="275" key="GridCell.Tab.1.center" timestamp="1584566634306">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="275" key="GridCell.Tab.1.center/0.0.1600.860@0.0.1600.860" timestamp="1584197282735" />
-    <state width="1557" height="275" key="GridCell.Tab.1.left" timestamp="1584197282735">
+    <state width="1557" height="275" key="GridCell.Tab.1.center/0.0.1600.860@0.0.1600.860" timestamp="1584566634306" />
+    <state width="1557" height="275" key="GridCell.Tab.1.left" timestamp="1584566634306">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="275" key="GridCell.Tab.1.left/0.0.1600.860@0.0.1600.860" timestamp="1584197282735" />
-    <state width="1557" height="275" key="GridCell.Tab.1.right" timestamp="1584197282735">
+    <state width="1557" height="275" key="GridCell.Tab.1.left/0.0.1600.860@0.0.1600.860" timestamp="1584566634306" />
+    <state width="1557" height="275" key="GridCell.Tab.1.right" timestamp="1584566634306">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="275" key="GridCell.Tab.1.right/0.0.1600.860@0.0.1600.860" timestamp="1584197282735" />
+    <state width="1557" height="275" key="GridCell.Tab.1.right/0.0.1600.860@0.0.1600.860" timestamp="1584566634306" />
     <state x="280" y="5" key="SettingsEditor" timestamp="1584187637676">
       <screen x="0" y="0" width="1600" height="860" />
     </state>

@@ -2,18 +2,21 @@ package hackstyle;
 
 import hackstyle.gui.HSGui;
 import hackstyle.keyboard.Keyboard;
-import hackstyle.scripts.Avatar;
-import hackstyle.scripts.Clicker;
-import hackstyle.scripts.Macro;
-import hackstyle.scripts.Spam;
+import hackstyle.scripts.Script;
+import hackstyle.scripts.actions.*;
+import hackstyle.scripts.exceptions.ScriptParsingException;
+import hackstyle.scripts.parsing.ScriptActionParser;
+import hackstyle.scripts.parsing.ScriptVariableParser;
+import hackstyle.scripts.parsing.ScriptsFileParser;
+import hackstyle.scripts.variables.ConstantVariable;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.jnativehook.GlobalScreen;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.io.IOException;
+import java.util.List;
 
 public class HackStyle extends Application {
 
@@ -22,39 +25,42 @@ public class HackStyle extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws IOException, ScriptParsingException {
+        final ScriptActionParser actionParser = new ScriptActionParser();
+        actionParser.addScriptActionCreator("SLEEP",
+                variables -> new SleepAction(variables.next()));
+        actionParser.addScriptActionCreator("KICK",
+                variables -> new KickAction(variables.next()));
+        actionParser.addScriptActionCreator("CLICK",
+                variables -> new ClickAction(variables.next()));
+        actionParser.addScriptActionCreator("WRITE",
+                variables -> new WriteAction(variables.next()));
+        actionParser.addScriptActionCreator("AVATAR",
+                variables -> new AvatarAction(variables.next()));
+        actionParser.addScriptActionCreator("AVATARS",
+                variables -> new AvatarsAction(variables.next()));
+        actionParser.addScriptActionCreator("LOOP",
+                variables -> new LoopAction(variables.next()));
+        actionParser.addScriptActionCreator("WHILE",
+                variables -> new WhileAction(variables.next()));
+        actionParser.addScriptActionCreator("ENDL",
+                variables -> new EndLoopAction());
 
-        HSConfigs configs = new HSConfigs("HackStyleConfigs.txt");
+        final ScriptVariableParser variableParser = new ScriptVariableParser();
+        variableParser.addScriptVariableCreator("$RUNNING", () -> new ConstantVariable("1"));
+        variableParser.addScriptVariableCreator("SLIDER", () -> new ConstantVariable("FUCK YOU ALL"));
+
+        final ScriptsFileParser scriptsFileParser = new ScriptsFileParser(actionParser, variableParser);
+        final String code = new FileReader().readFIle("./HackStyleScripts.txt");
+        final List<Script> scripts = scriptsFileParser.parse(code);
 
         Keyboard.init();
-
-        try {
-            configs.loadData();
-        } catch (Exception e) {
-            configs.set("SPLIT", "/");
-            configs.set("PRESS", "R");
-            configs.set("DOUBLE", "R");
-            configs.set("CLICK", "R");
-            configs.set("SPAM", "R");
-            configs.set("AVATAR", "R");
-            configs.set("DEFAULT AVATAR", ":}");
-            configs.set("DEFAULT SPEED", "60");
-            configs.updateFile();
-        }
-
-        String s = configs.getString("SPLIT");
-        Map<String, HaxballScript> scripts = new LinkedHashMap<>();
-        scripts.put("Press", Macro.endless(configs.getIndicator("PRESS")));
-        scripts.put("Double", Macro.create(2, configs.getIndicator("DOUBLE")));
-        scripts.put("Click", Clicker.create(configs.getIndicator("CLICK")));
-        scripts.put("Spam", Spam.fromGUI(s, configs.getIndicator("SPAM")));
-        scripts.put("Avatar", Avatar.fromGUI(configs.getIndicator("AVATAR")));
 
         final HSGui gui = new HSGui(configs, scripts);
         gui.setTextFieldText(configs.getString("DEFAULT AVATAR"));
         gui.setScrollBarValue(configs.getInt("DEFAULT SPEED"));
 
-        Scene scene = new Scene(gui, 700, 300);
+        final Scene scene = new Scene(gui, 700, 300);
         primaryStage.setResizable(false);
         primaryStage.setScene(scene);
         primaryStage.setTitle("HackStyle by Style");

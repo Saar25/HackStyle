@@ -23,38 +23,6 @@ public class ScriptsFileParser {
         this.scriptVariableParser = scriptVariableParser;
     }
 
-    public static void main(String[] args) throws IOException, ScriptParsingException {
-        final ScriptActionParser actionParser = new ScriptActionParser();
-        actionParser.addScriptActionCreator("SLEEP",
-                variables -> new SleepAction(variables.next()));
-        actionParser.addScriptActionCreator("KICK",
-                variables -> new KickAction(variables.next()));
-        actionParser.addScriptActionCreator("CLICK",
-                variables -> new ClickAction(variables.next()));
-        actionParser.addScriptActionCreator("WRITE",
-                variables -> new WriteAction(variables.next()));
-        actionParser.addScriptActionCreator("AVATAR",
-                variables -> new AvatarAction(variables.next()));
-        actionParser.addScriptActionCreator("AVATARS",
-                variables -> new AvatarsAction(variables.next()));
-        actionParser.addScriptActionCreator("LOOP",
-                variables -> new LoopAction(variables.next()));
-        actionParser.addScriptActionCreator("ENDL",
-                variables -> new EndLoopAction());
-
-        final ScriptVariableParser variableParser = new ScriptVariableParser();
-        variableParser.addScriptVariableCreator("$RUNNING", () -> new ConstantVariable("1"));
-        variableParser.addScriptVariableCreator("SLIDER", () -> new ConstantVariable("FUCK YOU ALL"));
-
-        final ScriptsFileParser scriptsFileParser = new ScriptsFileParser(actionParser, variableParser);
-
-        final String code = new FileReader().readFIle("./HackStyleScripts.txt");
-
-        for (Script script : scriptsFileParser.parse(code)) {
-            System.out.println(script);
-        }
-    }
-
     public List<Script> parse(String code) throws ScriptParsingException {
         final List<Script> scripts = new ArrayList<>();
         for (String scriptCode : code.split(",")) {

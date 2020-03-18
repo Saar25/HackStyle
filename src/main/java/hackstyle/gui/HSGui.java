@@ -1,20 +1,20 @@
 package hackstyle.gui;
 
 import hackstyle.HSConfigs;
-import hackstyle.HaxballScript;
+import hackstyle.scripts.Script;
 import javafx.geometry.Orientation;
 import javafx.scene.control.ScrollBar;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 
-import java.util.Map;
+import java.util.List;
 
 public class HSGui extends TabPane {
 
     private static TextField textField;
     private static ScrollBar scrollBar;
 
-    public HSGui(HSConfigs configs, Map<String, HaxballScript> scripts) {
+    public HSGui(HSConfigs configs, List<Script> scripts) {
         textField = new TextField("");
         textField.setMaxWidth(200);
         textField.setStyle("-fx-font: 20px Tahoma;");

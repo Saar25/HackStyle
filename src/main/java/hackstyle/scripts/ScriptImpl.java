@@ -35,6 +35,7 @@ public class ScriptImpl implements Script {
         executor.submit(() -> {
             for (ScriptAction scriptAction : scriptActions) {
                 scriptAction.act(state);
+                state.nextScriptIndex();
             }
         });
     }

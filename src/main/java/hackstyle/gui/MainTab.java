@@ -1,6 +1,7 @@
 package hackstyle.gui;
 
-import hackstyle.HaxballScript;
+import hackstyle.scripts.ActiveScripts;
+import hackstyle.scripts.Script;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollBar;
@@ -11,11 +12,13 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
-import java.util.Map;
+import java.util.List;
 
 public class MainTab extends Tab {
 
-    public MainTab(Map<String, HaxballScript> scripts, ScrollBar scrollBar, TextField textField) {
+    private final ActiveScripts activeScripts = new ActiveScripts();
+
+    public MainTab(List<Script> scripts, ScrollBar scrollBar, TextField textField) {
         super("Scripts");
 
         final VBox mainBox = new VBox();
@@ -26,8 +29,8 @@ public class MainTab extends Tab {
         checkBoxes.setAlignment(Pos.CENTER);
         checkBoxes.setSpacing(20);
 
-        scripts.forEach((text, script) ->
-                checkBoxes.getChildren().add(new ScriptCheckBox(text, script)));
+        scripts.forEach(script -> checkBoxes.getChildren().add(
+                new ScriptCheckBox(activeScripts, script)));
 
         final Label label = new Label("Executions per second: " + (int) HSGui.getScrollBarValue());
         scrollBar.valueProperty().addListener(e -> label.setText("Executions per second: " + (int) HSGui.getScrollBarValue()));
@@ -41,5 +44,9 @@ public class MainTab extends Tab {
 
         setClosable(false);
         setContent(mainScreen);
+    }
+
+    public ActiveScripts getActiveScripts() {
+        return this.activeScripts;
     }
 }
