@@ -54,11 +54,16 @@ public class HackStyle extends Application {
         final String code = new FileReader().readFIle("./HackStyleScripts.txt");
         final List<Script> scripts = scriptsFileParser.parse(code);
 
-        Keyboard.init();
-
         final HSGui gui = new HSGui(scripts);
-        gui.setTextFieldText(configs.getString("DEFAULT AVATAR"));
-        gui.setScrollBarValue(configs.getInt("DEFAULT SPEED"));
+        gui.setTextFieldText("|><|");
+        gui.setScrollBarValue(25);
+
+        Keyboard.init();
+        Keyboard.addListener(event -> {
+            for (Script script : gui.getActiveScripts().get()) {
+                if (script.)
+            }
+        })
 
         final Scene scene = new Scene(gui, 700, 300);
         primaryStage.setResizable(false);

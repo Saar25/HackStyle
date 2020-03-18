@@ -6,5 +6,7 @@ public interface Script {
 
     int indicator();
 
-    void run();
+    void start();
+
+    void stop();
 }

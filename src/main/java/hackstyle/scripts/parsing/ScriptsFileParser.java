@@ -1,13 +1,9 @@
 package hackstyle.scripts.parsing;
 
-import hackstyle.FileReader;
 import hackstyle.scripts.*;
-import hackstyle.scripts.actions.*;
 import hackstyle.scripts.exceptions.InvalidScriptActionException;
 import hackstyle.scripts.exceptions.ScriptParsingException;
-import hackstyle.scripts.variables.ConstantVariable;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

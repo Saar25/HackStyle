@@ -1,5 +1,6 @@
 package hackstyle.gui;
 
+import hackstyle.scripts.ActiveScripts;
 import hackstyle.scripts.Script;
 import javafx.geometry.Orientation;
 import javafx.scene.control.ScrollBar;
@@ -12,6 +13,7 @@ public class HSGui extends TabPane {
 
     private static TextField textField;
     private static ScrollBar scrollBar;
+    private final MainTab mainTab;
 
     public HSGui(List<Script> scripts) {
         textField = new TextField("");
@@ -25,8 +27,14 @@ public class HSGui extends TabPane {
         scrollBar.setMax(100);
         scrollBar.setMin(5);
 
-        getTabs().add(new MainTab(scripts, scrollBar, textField));
+        mainTab = new MainTab(scripts, scrollBar, textField);
+        getTabs().add(mainTab);
         getTabs().add(new InternetTab());
+
+    }
+
+    public ActiveScripts getActiveScripts() {
+        return this.mainTab.getActiveScripts();
     }
 
     public static double getScrollBarValue() {

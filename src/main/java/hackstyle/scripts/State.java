@@ -8,6 +8,7 @@ public class State {
     private final List<ScriptAction> scriptActions;
 
     private int scriptIndex = 0;
+    private boolean running = true;
 
     public State(List<ScriptAction> scriptActions) {
         this.scriptActions = Collections.unmodifiableList(scriptActions);
@@ -27,5 +28,13 @@ public class State {
 
     public void setScriptIndex(int scriptIndex) {
         this.scriptIndex = scriptIndex;
+    }
+
+    public boolean isRunning() {
+        return running;
+    }
+
+    public void setRunning(boolean running) {
+        this.running = running;
     }
 }

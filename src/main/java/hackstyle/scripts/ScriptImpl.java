@@ -12,6 +12,8 @@ public class ScriptImpl implements Script {
     private final int indicator;
     private final List<ScriptAction> scriptActions;
 
+    private boolean running = false;
+
     public ScriptImpl(String name, int indicator, List<ScriptAction> scriptActions) {
         this.name = name;
         this.indicator = indicator;
@@ -29,14 +31,22 @@ public class ScriptImpl implements Script {
     }
 
     @Override
-    public void run() {
+    public void start() {
+        this.running = true;
+
         final State state = new State(scriptActions);
 
         executor.submit(() -> {
-            for (ScriptAction scriptAction : scriptActions) {
-                scriptAction.act(state);
+            while (state.getScriptIndex() < scriptActions.size() && running) {
+                scriptActions.get(state.getScriptIndex()).act(state);
+                state.setRunning(running);
                 state.nextScriptIndex();
             }
         });
+    }
+
+    @Override
+    public void stop() {
+        this.running = false;
     }
 }
