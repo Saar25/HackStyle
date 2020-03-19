@@ -8,4 +8,7 @@ public interface ScriptAction {
 
     }
 
+    interface Creator {
+        ScriptAction create(VariableStream variables);
+    }
 }
