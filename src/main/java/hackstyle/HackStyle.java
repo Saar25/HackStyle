@@ -58,7 +58,7 @@ public class HackStyle extends Application {
             }
         });
         Keyboard.onKeyRelease().perform(event -> {
-            for (Script script : scripts) {
+            for (Script script : mainTab.getActiveScripts().get()) {
                 if (KeyboardUtils.parseCharToKey(script.indicator()) == event.getKeyCode()) {
                     script.stop();
                 }
