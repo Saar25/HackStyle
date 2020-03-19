@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class ScriptImpl implements Script {
+public class ExternalScript implements Script {
 
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
 
@@ -14,7 +14,7 @@ public class ScriptImpl implements Script {
 
     private boolean running = false;
 
-    public ScriptImpl(String name, char indicator, List<ScriptAction> scriptActions) {
+    public ExternalScript(String name, char indicator, List<ScriptAction> scriptActions) {
         this.name = name;
         this.indicator = indicator;
         this.scriptActions = scriptActions;

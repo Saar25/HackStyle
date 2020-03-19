@@ -40,7 +40,7 @@ public class ScriptsFileParser {
         Validator.validateCode(code);
 
         final List<ScriptAction> actions = parseCode(code);
-        return new ScriptImpl(name, indicator.charAt(0), actions);
+        return new ExternalScript(name, indicator.charAt(0), actions);
     }
 
     private List<ScriptAction> parseCode(String code) throws InvalidScriptActionException {
