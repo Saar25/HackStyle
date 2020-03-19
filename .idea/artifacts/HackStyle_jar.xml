@@ -1,9 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="HackStyle:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/HackStyle_jar</output-path>
-    <root id="archive" name="HackStyle.jar">
-      <element id="module-output" name="HackStyle" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/libs/jnativehook-2.1.0.jar" path-in-jar="/" />
-    </root>
-  </artifact>
-</component>
