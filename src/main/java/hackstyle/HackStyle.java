@@ -8,6 +8,7 @@ import hackstyle.scripts.Script;
 import hackstyle.scripts.exceptions.ScriptParsingException;
 import hackstyle.scripts.parsing.ScriptVariableParser;
 import hackstyle.scripts.parsing.ScriptsFileParser;
+import hackstyle.scripts.variables.ConstantVariable;
 import hackstyle.scripts.variables.ScrollBarVariable;
 import hackstyle.scripts.variables.TextBarVariable;
 import javafx.application.Application;
@@ -43,6 +44,7 @@ public class HackStyle extends Application {
         final ScriptVariableParser variableParser = new ScriptVariableParser();
         variableParser.addScriptVariableCreator("SLIDER", () -> new ScrollBarVariable(mainTab.getScrollBar()));
         variableParser.addScriptVariableCreator("TEXTBAR", () -> new TextBarVariable(mainTab.getTextField()));
+        variableParser.addScriptVariableCreator("DEFAULT_AVATAR", () -> new ConstantVariable("|>"));
         final List<Script> scripts = readScripts(variableParser);
 
         scripts.forEach(mainTab::addScript);

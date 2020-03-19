@@ -1,0 +1,21 @@
+Date: 2020/03/19 19:05:29
+*******
+An error occurred, please show me (Style) the error so I can fix it :}
+*******
+
+Cannot parse action: 
+hackstyle.scripts.parsing.ScriptActionParser.parse(ScriptActionParser.java:53)
+hackstyle.scripts.parsing.ScriptsFileParser.parseCode(ScriptsFileParser.java:55)
+hackstyle.scripts.parsing.ScriptsFileParser.parseScript(ScriptsFileParser.java:42)
+hackstyle.scripts.parsing.ScriptsFileParser.parse(ScriptsFileParser.java:25)
+hackstyle.HackStyle.readScripts(HackStyle.java:88)
+hackstyle.HackStyle.start(HackStyle.java:48)
+com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
+com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
+com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
+java.security.AccessController.doPrivileged(Native Method)
+com.sun.javafx.application.PlatformImpl.lambda$runLater$173(PlatformImpl.java:294)
+com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95)
+com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+com.sun.glass.ui.win.WinApplication.lambda$null$147(WinApplication.java:177)
+java.lang.Thread.run(Thread.java:748)

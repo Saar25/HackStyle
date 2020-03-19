@@ -21,7 +21,7 @@ public class ScriptsFileParser {
 
     public List<Script> parse(String code) throws ScriptParsingException {
         final List<Script> scripts = new ArrayList<>();
-        for (String scriptCode : code.split(",")) {
+        for (String scriptCode : code.split(",\r\n")) {
             scripts.add(parseScript(scriptCode));
         }
         return scripts;
