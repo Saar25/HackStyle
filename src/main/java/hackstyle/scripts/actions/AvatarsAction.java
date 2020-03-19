@@ -1,17 +1,16 @@
 package hackstyle.scripts.actions;
 
 import hackstyle.HaxballRobot;
-import hackstyle.scripts.ScriptAction;
-import hackstyle.scripts.ScriptVariable;
-import hackstyle.scripts.State;
+import hackstyle.scripts.*;
 
+@ScriptActionSettings(keyword = "AVATARS")
 public class AvatarsAction implements ScriptAction {
 
     private final ScriptVariable avatar;
     private int index = 0;
 
-    public AvatarsAction(ScriptVariable avatar) {
-        this.avatar = avatar;
+    public AvatarsAction(VariableStream variables) {
+        this.avatar = variables.next();
     }
 
     @Override

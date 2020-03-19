@@ -1,9 +1,16 @@
 package hackstyle.scripts.actions;
 
 import hackstyle.scripts.ScriptAction;
+import hackstyle.scripts.ScriptActionSettings;
 import hackstyle.scripts.State;
+import hackstyle.scripts.VariableStream;
 
+@ScriptActionSettings(keyword = "ENDL")
 public class EndLoopAction implements ScriptAction {
+
+    public EndLoopAction(VariableStream variables) {
+
+    }
 
     @Override
     public State act(State state) {

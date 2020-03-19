@@ -7,6 +7,7 @@ import hackstyle.scripts.exceptions.InvalidScriptActionException;
 import org.reflections.Reflections;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -15,10 +16,10 @@ public class ScriptActionParser {
 
     private static final String SCRIPT_ACTIONS_PACKAGE = "hackstyle.scripts.actions";
 
-    private final Map<String, ScriptAction.Creator> scriptActionCreators = new HashMap<>();
+    private final Map<String, ScriptAction.Creator> scriptActionCreators;
 
-    public void addScriptActionCreator(String variableName, ScriptAction.Creator creator) {
-        this.scriptActionCreators.put(variableName, creator);
+    public ScriptActionParser() throws NoSuchMethodException {
+        this.scriptActionCreators = getAllScriptActions();
     }
 
     private static Map<String, ScriptAction.Creator> getAllScriptActions() throws NoSuchMethodException {
@@ -29,8 +30,16 @@ public class ScriptActionParser {
 
         for (Class<? extends ScriptAction> action : actions) {
             final ScriptActionSettings settings = action.getAnnotation(ScriptActionSettings.class);
-            final Constructor<? extends ScriptAction> constructor = action.getDeclaredConstructor(VariableStream.class);
-            scriptActions.put(settings.name(), constructor::newInstance);
+            final Constructor<? extends ScriptAction> constructor =
+                    action.getDeclaredConstructor(VariableStream.class);
+            scriptActions.put(settings.keyword(), variables -> {
+                try {
+                    return constructor.newInstance(variables);
+                } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+                return null;
+            });
         }
 
         return scriptActions;

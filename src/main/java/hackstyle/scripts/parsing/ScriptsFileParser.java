@@ -14,8 +14,8 @@ public class ScriptsFileParser {
     private final ScriptActionParser scriptActionParser;
     private final ScriptVariableParser scriptVariableParser;
 
-    public ScriptsFileParser(ScriptActionParser scriptActionParser, ScriptVariableParser scriptVariableParser) {
-        this.scriptActionParser = scriptActionParser;
+    public ScriptsFileParser(ScriptVariableParser scriptVariableParser) throws NoSuchMethodException {
+        this.scriptActionParser = new ScriptActionParser();
         this.scriptVariableParser = scriptVariableParser;
     }
 

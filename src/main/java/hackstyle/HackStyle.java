@@ -5,9 +5,7 @@ import hackstyle.gui.MainTab;
 import hackstyle.keyboard.Keyboard;
 import hackstyle.keyboard.KeyboardUtils;
 import hackstyle.scripts.Script;
-import hackstyle.scripts.actions.*;
 import hackstyle.scripts.exceptions.ScriptParsingException;
-import hackstyle.scripts.parsing.ScriptActionParser;
 import hackstyle.scripts.parsing.ScriptVariableParser;
 import hackstyle.scripts.parsing.ScriptsFileParser;
 import hackstyle.scripts.variables.ScrollBarVariable;
@@ -42,11 +40,10 @@ public class HackStyle extends Application {
         gui.getTabs().add(mainTab);
         gui.getTabs().add(new InternetTab());
 
-        final ScriptActionParser actionParser = createActionParser();
         final ScriptVariableParser variableParser = new ScriptVariableParser();
         variableParser.addScriptVariableCreator("SLIDER", () -> new ScrollBarVariable(mainTab.getScrollBar()));
         variableParser.addScriptVariableCreator("TEXTBAR", () -> new TextBarVariable(mainTab.getTextField()));
-        final List<Script> scripts = readScripts(actionParser, variableParser);
+        final List<Script> scripts = readScripts(variableParser);
 
         scripts.forEach(mainTab::addScript);
 
@@ -82,36 +79,15 @@ public class HackStyle extends Application {
         }
     }
 
-    private static List<Script> readScripts(ScriptActionParser actionParser, ScriptVariableParser variableParser) {
+    private static List<Script> readScripts(ScriptVariableParser variableParser) {
         try {
-            final ScriptsFileParser scriptsFileParser = new ScriptsFileParser(actionParser, variableParser);
+            final ScriptsFileParser scriptsFileParser = new ScriptsFileParser(variableParser);
             final String code = new FileReader().readFIle(SCRIPT_FILE);
             return scriptsFileParser.parse(code);
-        } catch (ScriptParsingException | IOException e) {
-            e.printStackTrace();
+        } catch (ScriptParsingException | IOException | NoSuchMethodException e) {
             ErrorMessage.createErrorFile(e);
+            e.printStackTrace();
         }
         return Collections.emptyList();
-    }
-
-    private static ScriptActionParser createActionParser() {
-        final ScriptActionParser actionParser = new ScriptActionParser();
-        actionParser.addScriptActionCreator("SLEEP",
-                variables -> new SleepAction(variables.next()));
-        actionParser.addScriptActionCreator("KICK",
-                variables -> new KickAction(variables.next()));
-        actionParser.addScriptActionCreator("CLICK",
-                variables -> new ClickAction(variables.next()));
-        actionParser.addScriptActionCreator("WRITE",
-                variables -> new WriteAction(variables.next()));
-        actionParser.addScriptActionCreator("AVATAR",
-                variables -> new AvatarAction(variables.next()));
-        actionParser.addScriptActionCreator("AVATARS",
-                variables -> new AvatarsAction(variables.next()));
-        actionParser.addScriptActionCreator("LOOP",
-                variables -> new LoopAction(variables.next()));
-        actionParser.addScriptActionCreator("ENDL",
-                variables -> new EndLoopAction());
-        return actionParser;
     }
 }

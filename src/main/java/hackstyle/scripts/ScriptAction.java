@@ -1,7 +1,5 @@
 package hackstyle.scripts;
 
-import java.lang.reflect.InvocationTargetException;
-
 public interface ScriptAction {
 
     State act(State state);
@@ -11,6 +9,6 @@ public interface ScriptAction {
     }
 
     interface Creator {
-        ScriptAction create(VariableStream variables) throws IllegalAccessException, InvocationTargetException, InstantiationException;
+        ScriptAction create(VariableStream variables);
     }
 }

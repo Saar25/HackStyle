@@ -1,16 +1,15 @@
 package hackstyle.scripts.actions;
 
 import hackstyle.HaxballRobot;
-import hackstyle.scripts.ScriptAction;
-import hackstyle.scripts.ScriptVariable;
-import hackstyle.scripts.State;
+import hackstyle.scripts.*;
 
+@ScriptActionSettings(keyword = "CLICK")
 public class ClickAction implements ScriptAction {
 
     private final ScriptVariable length;
 
-    public ClickAction(ScriptVariable length) {
-        this.length = length;
+    public ClickAction(VariableStream variables) {
+        this.length = variables.next();
     }
 
     @Override

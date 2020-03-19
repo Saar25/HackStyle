@@ -1,15 +1,14 @@
 package hackstyle.scripts.actions;
 
-import hackstyle.scripts.ScriptAction;
-import hackstyle.scripts.ScriptVariable;
-import hackstyle.scripts.State;
+import hackstyle.scripts.*;
 
+@ScriptActionSettings(keyword = "SLEEP")
 public class SleepAction implements ScriptAction {
 
     private final ScriptVariable variable;
 
-    public SleepAction(ScriptVariable variable) {
-        this.variable = variable;
+    public SleepAction(VariableStream variables) {
+        this.variable = variables.next();
     }
 
     @Override

@@ -1,17 +1,16 @@
 package hackstyle.scripts.actions;
 
-import hackstyle.scripts.ScriptAction;
-import hackstyle.scripts.ScriptVariable;
-import hackstyle.scripts.State;
+import hackstyle.scripts.*;
 
+@ScriptActionSettings(keyword = "WHILE")
 public class WhileAction implements ScriptAction {
 
     private static final String TRUE = "1";
 
     private final ScriptVariable variable;
 
-    public WhileAction(ScriptVariable variable) {
-        this.variable = variable;
+    public WhileAction(VariableStream variables) {
+        this.variable = variables.next();
     }
 
     @Override

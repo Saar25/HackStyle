@@ -1,16 +1,15 @@
 package hackstyle.scripts.actions;
 
-import hackstyle.scripts.ScriptAction;
-import hackstyle.scripts.ScriptVariable;
-import hackstyle.scripts.State;
+import hackstyle.scripts.*;
 
+@ScriptActionSettings(keyword = "LOOP")
 public class LoopAction implements ScriptAction {
 
     private final int loops;
     private int index;
 
-    public LoopAction(ScriptVariable loops) {
-        this.loops = Integer.parseInt(loops.get());
+    public LoopAction(VariableStream variables) {
+        this.loops = Integer.parseInt(variables.next().get());
     }
 
     @Override
