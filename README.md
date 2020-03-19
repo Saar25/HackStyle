@@ -1,7 +1,7 @@
 # HackStyle
 Haxball useful tools
 
-You can change the indicator key in the settings tab
+You can add and change scripts using the HackStyleScripts.txt file!
 
 Features:
 Macro
