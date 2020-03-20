@@ -6,8 +6,10 @@ import hackstyle.keyboard.Keyboard;
 import hackstyle.keyboard.KeyboardUtils;
 import hackstyle.scripts.Script;
 import hackstyle.scripts.exceptions.ScriptParsingException;
+import hackstyle.scripts.parsing.HackStyleScriptParser;
+import hackstyle.scripts.parsing.HackStyleSettings;
+import hackstyle.scripts.parsing.HackStyleSettingsReader;
 import hackstyle.scripts.parsing.ScriptVariableParser;
-import hackstyle.scripts.parsing.ScriptsFileParser;
 import hackstyle.scripts.variables.ConstantVariable;
 import hackstyle.scripts.variables.ScrollBarVariable;
 import hackstyle.scripts.variables.TextBarVariable;
@@ -18,13 +20,14 @@ import javafx.scene.control.TabPane;
 import javafx.stage.Stage;
 import org.jnativehook.GlobalScreen;
 
-import java.io.IOException;
+import javax.xml.bind.JAXBException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class HackStyle extends Application {
 
-    private static final String SCRIPT_FILE = "./HackStyleScripts.txt";
+    private static final String SETTINGS_FILE = "./HackStyleScripts.txt";
 
     public static void main(String[] args) {
         launch(args);
@@ -32,11 +35,23 @@ public class HackStyle extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        final HackStyleSettings settings = readSettings(SETTINGS_FILE);
+        if (settings == null) {
+            System.exit(-1);
+        }
 
         final TabPane gui = new TabPane();
         final MainTab mainTab = new MainTab();
-        mainTab.getTextField().setText("|><|");
-        mainTab.getScrollBar().setValue(25);
+
+        final String defaultTextField = settings.values.stream()
+                .filter(value -> value.name.equals("DEFAULT-TEXTFIELD"))
+                .findFirst().map(value -> value.content).orElse("");
+        mainTab.getTextField().setText(defaultTextField);
+
+        final int defaultSlider = settings.values.stream()
+                .filter(value -> value.name.equals("DEFAULT-SLIDER"))
+                .findFirst().map(value -> Integer.parseInt(value.content)).orElse(5);
+        mainTab.getScrollBar().setValue(defaultSlider);
 
         gui.getTabs().add(mainTab);
         gui.getTabs().add(new InternetTab());
@@ -45,7 +60,10 @@ public class HackStyle extends Application {
         variableParser.addScriptVariableCreator("SLIDER", () -> new ScrollBarVariable(mainTab.getScrollBar()));
         variableParser.addScriptVariableCreator("TEXTBAR", () -> new TextBarVariable(mainTab.getTextField()));
         variableParser.addScriptVariableCreator("DEFAULT_AVATAR", () -> new ConstantVariable("|>"));
-        final List<Script> scripts = readScripts(variableParser);
+
+        final HackStyleScriptParser parser = new HackStyleScriptParser(variableParser);
+
+        final List<Script> scripts = readScripts(settings, parser);
 
         scripts.forEach(mainTab::addScript);
 
@@ -81,12 +99,24 @@ public class HackStyle extends Application {
         }
     }
 
-    private static List<Script> readScripts(ScriptVariableParser variableParser) {
+    private static HackStyleSettings readSettings(String path) {
         try {
-            final ScriptsFileParser scriptsFileParser = new ScriptsFileParser(variableParser);
-            final String code = new FileReader().readFIle(SCRIPT_FILE);
-            return scriptsFileParser.parse(code);
-        } catch (ScriptParsingException | IOException | NoSuchMethodException e) {
+            return HackStyleSettingsReader.read(path);
+        } catch (JAXBException e) {
+            e.printStackTrace();
+            ErrorMessage.createErrorFile(e);
+        }
+        return null;
+    }
+
+    private static List<Script> readScripts(HackStyleSettings settings, HackStyleScriptParser parser) {
+        try {
+            final List<Script> scripts = new ArrayList<>(settings.scripts.size());
+            for (HackStyleSettings.Script script : settings.scripts) {
+                scripts.add(parser.parseScript(script));
+            }
+            return scripts;
+        } catch (ScriptParsingException | NoSuchMethodException e) {
             ErrorMessage.createErrorFile(e);
             e.printStackTrace();
         }

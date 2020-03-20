@@ -25,13 +25,13 @@ public class HackStyleSettings {
 
     @XmlRootElement(name = "value")
     @XmlAccessorType(XmlAccessType.FIELD)
-    private static class Value {
+    public static class Value {
 
         @XmlElement(name = "name")
-        private String name;
+        public String name;
 
         @XmlElement(name = "content")
-        private String content;
+        public String content;
 
         @Override
         public String toString() {
@@ -44,16 +44,16 @@ public class HackStyleSettings {
 
     @XmlRootElement(name = "script")
     @XmlAccessorType(XmlAccessType.FIELD)
-    private static class Script {
+    public static class Script {
 
         @XmlElement(name = "name")
-        private String name;
+        public String name;
 
         @XmlElement(name = "indicator")
-        private String indicator;
+        public String indicator;
 
         @XmlElement(name = "code")
-        private String code;
+        public String code;
 
         @Override
         public String toString() {

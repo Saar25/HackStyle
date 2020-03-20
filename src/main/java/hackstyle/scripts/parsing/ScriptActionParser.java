@@ -18,28 +18,32 @@ public class ScriptActionParser {
 
     private final Map<String, ScriptAction.Creator> scriptActionCreators;
 
-    public ScriptActionParser() throws NoSuchMethodException {
+    public ScriptActionParser() {
         this.scriptActionCreators = getAllScriptActions();
     }
 
-    private static Map<String, ScriptAction.Creator> getAllScriptActions() throws NoSuchMethodException {
+    private static Map<String, ScriptAction.Creator> getAllScriptActions() {
         final Map<String, ScriptAction.Creator> scriptActions = new HashMap<>();
 
         final Reflections reflections = new Reflections(SCRIPT_ACTIONS_PACKAGE);
         final Set<Class<? extends ScriptAction>> actions = reflections.getSubTypesOf(ScriptAction.class);
 
-        for (Class<? extends ScriptAction> action : actions) {
-            final ScriptActionSettings settings = action.getAnnotation(ScriptActionSettings.class);
-            final Constructor<? extends ScriptAction> constructor =
-                    action.getDeclaredConstructor(VariableStream.class);
-            scriptActions.put(settings.keyword(), variables -> {
-                try {
-                    return constructor.newInstance(variables);
-                } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
-                    e.printStackTrace();
-                }
-                return null;
-            });
+        try {
+            for (Class<? extends ScriptAction> action : actions) {
+                final ScriptActionSettings settings = action.getAnnotation(ScriptActionSettings.class);
+                final Constructor<? extends ScriptAction> constructor =
+                        action.getDeclaredConstructor(VariableStream.class);
+                scriptActions.put(settings.keyword(), variables -> {
+                    try {
+                        return constructor.newInstance(variables);
+                    } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
+                        e.printStackTrace();
+                    }
+                    return null;
+                });
+            }
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
         }
 
         return scriptActions;
