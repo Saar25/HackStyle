@@ -27,7 +27,7 @@ import java.util.List;
 
 public class HackStyle extends Application {
 
-    private static final String SETTINGS_FILE = "./HackStyleScripts.txt";
+    private static final String SETTINGS_FILE = "./HackStyleSettings.txt";
 
     public static void main(String[] args) {
         launch(args);
