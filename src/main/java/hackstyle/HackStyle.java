@@ -21,13 +21,14 @@ import javafx.stage.Stage;
 import org.jnativehook.GlobalScreen;
 
 import javax.xml.bind.JAXBException;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class HackStyle extends Application {
 
-    private static final String SETTINGS_FILE = "HackStyleSettings.txt";
+    private static final String SETTINGS_FILE = "HackStyleSettings.xml";
 
     public static void main(String[] args) {
         launch(args);
@@ -107,7 +108,7 @@ public class HackStyle extends Application {
     private static HackStyleSettings readSettings(String path) {
         try {
             return HackStyleSettingsReader.read(path);
-        } catch (JAXBException e) {
+        } catch (JAXBException | FileNotFoundException e) {
             e.printStackTrace();
             ErrorMessage.createErrorFile(e);
         }
