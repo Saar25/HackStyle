@@ -29,10 +29,10 @@ public class HackStyleScriptParser {
 
     private List<ScriptAction> parseCode(String code) throws InvalidScriptActionException {
         final List<ScriptAction> commands = new ArrayList<>();
-        code = code.replace("{", "").replace("}", "").replace("\r", "").replace("\t", "").substring(1);
+        code = code.replaceAll("\r", "").replaceAll("\t", "").trim().replaceAll("\n\\s+", "\n");
         for (String command : code.split("\n")) {
             final String[] split = command.split(" ", 2);
-            final String[] variables = split.length > 1 ? split[1].split(" ") : new String[0];
+            final String[] variables = split.length > 1 ? split[1].split("\\s+") : new String[0];
 
             final VariableStream variableStream = parseVariables(variables);
             final ScriptAction action = scriptActionParser.parse(split[0], variableStream);
