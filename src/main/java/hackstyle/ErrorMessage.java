@@ -17,7 +17,7 @@ public final class ErrorMessage {
             writer.println("Date: " + format.format(new Date()));
             writer.println("*******\nAn error occurred, please show me (Style) the error so I can fix it :}\n*******\n");
 
-            writer.println(e.getMessage());
+            writer.println(e.getClass().getName() + ": " + e.getMessage());
             for (StackTraceElement stackTraceElement : e.getStackTrace()) {
                 writer.println(stackTraceElement.toString());
             }
