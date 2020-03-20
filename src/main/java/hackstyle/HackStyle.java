@@ -57,9 +57,14 @@ public class HackStyle extends Application {
         gui.getTabs().add(new InternetTab());
 
         final ScriptVariableParser variableParser = new ScriptVariableParser();
-        variableParser.addScriptVariableCreator("SLIDER", () -> new ScrollBarVariable(mainTab.getScrollBar()));
-        variableParser.addScriptVariableCreator("TEXTBAR", () -> new TextBarVariable(mainTab.getTextField()));
-        variableParser.addScriptVariableCreator("DEFAULT_AVATAR", () -> new ConstantVariable("|>"));
+        variableParser.addScriptVariableCreator("SLIDER", () ->
+                new ScrollBarVariable(mainTab.getScrollBar()));
+        variableParser.addScriptVariableCreator("TEXTBAR", () ->
+                new TextBarVariable(mainTab.getTextField()));
+        for (HackStyleSettings.Value value : settings.values) {
+            variableParser.addScriptVariableCreator(value.name,
+                    () -> new ConstantVariable(value.content));
+        }
 
         final HackStyleScriptParser parser = new HackStyleScriptParser(variableParser);
 
@@ -116,7 +121,7 @@ public class HackStyle extends Application {
                 scripts.add(parser.parseScript(script));
             }
             return scripts;
-        } catch (ScriptParsingException | NoSuchMethodException e) {
+        } catch (ScriptParsingException e) {
             ErrorMessage.createErrorFile(e);
             e.printStackTrace();
         }
