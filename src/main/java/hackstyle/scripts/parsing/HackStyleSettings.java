@@ -5,7 +5,7 @@ import java.util.List;
 
 @XmlRootElement(name = "hackstyle")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class HackStyleFile {
+public class HackStyleSettings {
 
     @XmlElementWrapper(name = "values")
     @XmlElement(name = "value")
