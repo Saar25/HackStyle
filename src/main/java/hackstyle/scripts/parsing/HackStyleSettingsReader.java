@@ -8,7 +8,7 @@ import java.io.File;
 public final class HackStyleSettingsReader {
 
     private HackStyleSettingsReader() {
-
+        throw new AssertionError("Cannot create instance of " + getClass().getSimpleName());
     }
 
     public static HackStyleSettings read(String path) throws JAXBException {
