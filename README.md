@@ -3,7 +3,7 @@ Haxball useful tools
 
 https://www.youtube.com/watch?v=D5-qwV_V2ws
 
-You can add and change scripts using the HackStyleScripts.txt file!
+You can add and change scripts using the HackStyleSettings.xml file!
 
 Features:
 Macro
