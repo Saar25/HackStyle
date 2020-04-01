@@ -141,10 +141,11 @@ const copyLastMessage = () => {
     const text = children[children.length - 1].innerText
     const sender = text.slice(0, text.indexOf(": "))
     var message = text.slice(text.indexOf(": ") + 2)
-    if (sender != style.nickname && text.indexOf(": ") != -1) {
-        for (let nickname of style.nicknames) {
+    if (sender != style.nickname() && text.indexOf(": ") != -1) {
+        const hebrewSender = style.toHebrew(sender);
+        for (let nickname of style.nicknames()) {
             const regexp = new RegExp(nickname, 'g');
-            message = message.replace(regexp, sender)
+            message = message.replace(regexp, hebrewSender)
         }
         style.write(message)
         style.send()
