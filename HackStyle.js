@@ -52,174 +52,12 @@ const initGameDocument = () => {
     gameDocument = window.gameDocument = document.getElementsByClassName('gameframe')[0].contentWindow.document;
 }
 
-style.avatarTimer = new Timer(() => {
-    if (style.chatBox() !== gameDocument.activeElement) {
-        style.setNextAvatarIndex();
-        removeLastAvatarSetMessage();
-    }
-}, 100);
-
-style.chatBox = () => {
-    return gameDocument.getElementsByTagName("input")[0];
-}
-
-style.sendButton = () => {
-    return gameDocument.getElementsByClassName("input")[0].getElementsByTagName("button")[0];
-}
-
-style.chatHistory = () => {
-    return gameDocument.getElementsByClassName("log ps")[0];
-}
-
-style.write = (text) => {
-    style.chatBox().value = text;
-}
-
-style.writeAppend = (text) => {
-    style.chatBox().value += text;
-}
-
-style.send = () => {
-    style.sendButton().click();
-}
-
-style.getMessage = () => {
-    return style.chatBox().value;
-}
-
-style.setAvatar = (avatar) => {
-	style.write("/avatar " + avatar);
-	style.send();
-}
-
-style.setNextAvatarIndex = () => {
-    style.setAvatar(style.avatars[style.avatarIndex]);
-    style.avatarIndex = (style.avatarIndex + 1) % style.avatars.length;
-}
-
-style.setDefaultIndex = () => {
-    style.setAvatar(style.defaultAvatar);
-    style.avatarIndex = 0;
-}
-
-style.startAvatarChanger = () => {
-    style.avatarTimer.start();
-}
-
-style.stopAvatarChanger = () => {
-    style.avatarTimer.stop();
-    style.setAvatar(style.defaultAvatar);
-    style.avatarIndex = 0;
-}
-
-style.notice = (message) => {
-    const element = document.createElement("p");
-    element.className = "notice";
-    element.innerText = message;
-    style.chatHistory().appendChild(element);
-}
-
-const removeLastAvatarSetMessage = () => {
-    const chat = style.chatHistory();
-    if (chat.lastChild.innerText == "Avatar set") {
-        chat.lastChild.remove();
-    }
-}
-
-const getAll = () => {
-    const players = gameDocument.querySelectorAll('[data-hook=name]');
-    let string = ""
-    for (var i = 0; i < players.length; i++) {
-        var player = players[i].innerHTML.replace(/ /g, "_");
-        string += "@" + player + " ";
-    }
-    return string;
-}
-
-const copyLastMessage = () => {
-    const children = style.chatHistory().children
-    const text = children[children.length - 1].innerText
-    const sender = text.slice(0, text.indexOf(": "))
-    var message = text.slice(text.indexOf(": ") + 2)
-    if (sender != style.nickname() && text.indexOf(": ") != -1) {
-        const hebrewSender = style.toHebrew(sender);
-        for (let nickname of style.nicknames()) {
-            const regexp = new RegExp(nickname, 'g');
-            message = message.replace(regexp, hebrewSender)
-        }
-        style.write(message)
-        style.send()
-    }
-}
-
-const messagesObserver = new MutationObserver(copyLastMessage);
-var jinxOn = false;
-const toggleJinx = () => {
-    jinxOn = !jinxOn
-    if (jinxOn) {
-        messagesObserver.observe(style.chatHistory(), {childList: true});
-        return "Jinx: On";
-    } else {
-        messagesObserver.disconnect();
-        return "Jinx: Off";
-    }
-}
-
-const toggleAvatar = () => {
-    if (style.avatarTimer.isRunning()) {
-        style.stopAvatarChanger();
-        removeLastAvatarSetMessage();
-        style.notice("Avatar changer is disabled!");
-        return "Avatar: Off";
-    } else {
-        style.startAvatarChanger();
-        style.notice("Avatar changer is active!");
-        return "Avatar: On";
-    }
-}
-
-const spamMessage = () => {
-    var message = style.getMessage();
-    style.write(message);
-    style.send();
-    style.write(message);
-}
-
-const tagAll = () => {
-    const tag = getAll();
-    if (tag) {
-        const message = style.getMessage();
-        const string = tag + message;
-        style.write(string);
-        style.send();
-        style.write(message);
-    }
-}
-
-const controlledSend = () => {
-    style.send()
-}
-
-const addInGameButtons = () => {
-    const input = gameDocument.getElementsByClassName("input")[0];
-    if (input !== undefined) {
-        // controlled send
-        const send = input.children[1].cloneNode(false);
-        send.style.marginLeft = "5px";
-        send.innerText = "Send";
-        send.onclick = controlledSend;
-        input.appendChild(send);
-        // tag
-        const tag = input.children[1].cloneNode(false);
-        tag.style.marginLeft = "5px";
-        tag.innerText = "TagAll";
-        tag.onclick = tagAll;
-        input.appendChild(tag);
-        // spam
-        const spam = input.children[1].cloneNode(false);
-
-const letters = {
-    "a": "א",
+const regexes = {
+    "a$": "ה",
+    "m$": "ם",
+    "n$": "ן",
+    "ll": "ל",
+    "a": "",
     "b": "ב",
     "c": "צ",
     "d": "ד",
@@ -247,8 +85,11 @@ const letters = {
     "z": "ז",
 }
 style.toHebrew = (word) => {
-    return word.toLowerCase().split("")
-        .map((l) => letters[l]).join("");
+    if (/^[aeiou]/gi.test(word)) word = "א" + word;
+    for (let [regex, replacement] of Object.entries(regexes)) {
+        word = word.replace(new RegExp(regex, "gi"), replacement);
+    }
+    return word;
 }
 
 style.nickname = () => {
@@ -356,9 +197,10 @@ const copyLastMessage = () => {
     const sender = text.slice(0, text.indexOf(": "))
     var message = text.slice(text.indexOf(": ") + 2)
     if (sender != style.nickname() && text.indexOf(": ") != -1) {
+        const hebrewSender = style.toHebrew(sender);
         for (let nickname of style.nicknames()) {
             const regexp = new RegExp(nickname, 'g');
-            message = message.replace(regexp, sender)
+            message = message.replace(regexp, hebrewSender)
         }
         style.write(message)
         style.send()
