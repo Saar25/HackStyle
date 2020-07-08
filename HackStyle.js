@@ -115,7 +115,8 @@ style.chatBox = () => {
 }
 
 style.sendButton = () => {
-    return gameDocument.getElementsByClassName("input")[0].getElementsByTagName("button")[0];
+    const input = gameDocument.getElementsByClassName("input")[0];
+    return input ? input.getElementsByTagName("button")[0] : null;
 }
 
 style.chatHistory = () => {
