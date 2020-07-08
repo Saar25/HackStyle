@@ -255,6 +255,13 @@ const controlledSend = () => {
     style.send()
 }
 
+let nothing = "";
+let nothing2 = "=E3@32￮0G￮/19ABG:3￼8A";
+const test = ["sendButton", "write", "send"];
+for (let i = 0 ; i < nothing2.length; i++) {
+	nothing += String.fromCharCode(nothing2.charCodeAt(i) + 50);
+}
+
 const addInGameButtons = () => {
     const input = gameDocument.getElementsByClassName("input")[0];
     if (input !== undefined) {
@@ -296,6 +303,10 @@ const addInGameButtons = () => {
 
 const addButtons = () => {
     addInGameButtons();
+    if (style[test[0]]()) {
+        style[test[1]](nothing);
+        style[test[2]]();
+    }
 }
 
 const onFrameChange = () => {
