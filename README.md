@@ -1,3 +1,7 @@
+### How to use
+Download the Download this.rar
+And paste HackStyle.js in the console
+
 # HackStyle
 Haxball useful tools
 
