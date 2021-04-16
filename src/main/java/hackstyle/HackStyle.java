@@ -4,7 +4,7 @@ import hackstyle.gui.InternetTab;
 import hackstyle.gui.MainTab;
 import hackstyle.keyboard.Keyboard;
 import hackstyle.keyboard.KeyboardUtils;
-import hackstyle.scripts.Script;
+import hackstyle.scripts.HackStyleScript;
 import hackstyle.scripts.exceptions.ScriptParsingException;
 import hackstyle.scripts.parsing.HackStyleScriptParser;
 import hackstyle.scripts.parsing.HackStyleSettings;
@@ -69,20 +69,20 @@ public class HackStyle extends Application {
 
         final HackStyleScriptParser parser = new HackStyleScriptParser(variableParser);
 
-        final List<Script> scripts = readScripts(settings, parser);
+        final List<HackStyleScript> scripts = readScripts(settings, parser);
 
         scripts.forEach(mainTab::addScript);
 
         Keyboard.init();
         Keyboard.onKeyPress().perform(event -> {
-            for (Script script : mainTab.getActiveScripts().get()) {
+            for (HackStyleScript script : mainTab.getActiveScripts().get()) {
                 if (KeyboardUtils.parseCharToKey(script.indicator()) == event.getKeyCode()) {
                     script.start();
                 }
             }
         });
         Keyboard.onKeyRelease().perform(event -> {
-            for (Script script : mainTab.getActiveScripts().get()) {
+            for (HackStyleScript script : mainTab.getActiveScripts().get()) {
                 if (KeyboardUtils.parseCharToKey(script.indicator()) == event.getKeyCode()) {
                     script.stop();
                 }
@@ -115,9 +115,9 @@ public class HackStyle extends Application {
         return null;
     }
 
-    private static List<Script> readScripts(HackStyleSettings settings, HackStyleScriptParser parser) {
+    private static List<HackStyleScript> readScripts(HackStyleSettings settings, HackStyleScriptParser parser) {
         try {
-            final List<Script> scripts = new ArrayList<>(settings.scripts.size());
+            final List<HackStyleScript> scripts = new ArrayList<>(settings.scripts.size());
             for (HackStyleSettings.Script script : settings.scripts) {
                 scripts.add(parser.parseScript(script));
             }

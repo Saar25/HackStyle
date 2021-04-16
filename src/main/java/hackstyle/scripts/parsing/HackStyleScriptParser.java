@@ -1,7 +1,7 @@
 package hackstyle.scripts.parsing;
 
 import hackstyle.scripts.ExternalScript;
-import hackstyle.scripts.Script;
+import hackstyle.scripts.HackStyleScript;
 import hackstyle.scripts.ScriptAction;
 import hackstyle.scripts.VariableStream;
 import hackstyle.scripts.exceptions.InvalidScriptActionException;
@@ -22,7 +22,7 @@ public class HackStyleScriptParser {
         this.scriptVariableParser = scriptVariableParser;
     }
 
-    public Script parseScript(HackStyleSettings.Script script) throws ScriptParsingException {
+    public HackStyleScript parseScript(HackStyleSettings.Script script) throws ScriptParsingException {
         final List<ScriptAction> actions = parseCode(script.code);
         return new ExternalScript(script.name, script.indicator.charAt(0), actions);
     }

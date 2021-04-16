@@ -1,7 +1,7 @@
 package hackstyle.gui;
 
 import hackstyle.scripts.ActiveScripts;
-import hackstyle.scripts.Script;
+import hackstyle.scripts.HackStyleScript;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -57,7 +57,7 @@ public class MainTab extends Tab {
         setContent(mainScreen);
     }
 
-    public void addScript(Script script) {
+    public void addScript(HackStyleScript script) {
         checkBoxes.getChildren().add(new ScriptCheckBox(activeScripts, script));
     }
 

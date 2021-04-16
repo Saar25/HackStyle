@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class ExternalScript implements Script {
+public class ExternalScript implements HackStyleScript {
 
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
 
