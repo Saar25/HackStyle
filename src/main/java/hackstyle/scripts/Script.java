@@ -1,12 +1,11 @@
 package hackstyle.scripts;
 
-public interface Script {
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
-    String name();
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Script {
 
-    char indicator();
+    String value();
 
-    void start();
-
-    void stop();
 }
