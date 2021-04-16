@@ -31,7 +31,7 @@ public class KickScript implements HackStyleScript {
     }
 
     @Override
-    public void start() {
+    public void execute(ScriptInput input) {
 
     }
 

@@ -1,12 +1,8 @@
 package hackstyle.scripts;
 
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class ExternalScript implements HackStyleScript {
-
-    private final ExecutorService executor = Executors.newSingleThreadExecutor();
 
     private final String name;
     private final char indicator;
@@ -31,19 +27,16 @@ public class ExternalScript implements HackStyleScript {
     }
 
     @Override
-    public void start() {
-        if (!this.running) {
-            this.running = true;
+    public void execute(ScriptInput input) {
+        this.running = true;
 
-            executor.submit(() -> {
-                State state = new State(scriptActions);
+        State state = new State(this.scriptActions);
 
-                while (state.getScriptIndex() < scriptActions.size() && running) {
-                    final ScriptAction action = scriptActions.get(state.getScriptIndex());
-                    state = action.act(state);
-                    state.setRunning(running);
-                }
-            });
+        while (state.getScriptIndex() < this.scriptActions.size() && this.running) {
+            final ScriptAction action = this.scriptActions.get(state.getScriptIndex());
+            state = action.act(state);
+
+            state.setRunning(this.running);
         }
     }
 

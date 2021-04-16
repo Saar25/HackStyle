@@ -6,7 +6,7 @@ public interface HackStyleScript {
 
     char indicator();
 
-    void start();
+    void execute(ScriptInput input);
 
     void stop();
 }

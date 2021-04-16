@@ -5,6 +5,7 @@ import hackstyle.gui.MainTab;
 import hackstyle.keyboard.Keyboard;
 import hackstyle.keyboard.KeyboardUtils;
 import hackstyle.scripts.HackStyleScript;
+import hackstyle.scripts.HackStyleScriptRunner;
 import hackstyle.scripts.exceptions.ScriptParsingException;
 import hackstyle.scripts.parsing.HackStyleScriptParser;
 import hackstyle.scripts.parsing.HackStyleSettings;
@@ -32,6 +33,30 @@ public class HackStyle extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    private static HackStyleSettings readSettings(String path) {
+        try {
+            return HackStyleSettingsReader.read(path);
+        } catch (JAXBException | FileNotFoundException e) {
+            e.printStackTrace();
+            ErrorMessage.createErrorFile(e);
+        }
+        return null;
+    }
+
+    private static List<HackStyleScript> readScripts(HackStyleSettings settings, HackStyleScriptParser parser) {
+        try {
+            final List<HackStyleScript> scripts = new ArrayList<>(settings.scripts.size());
+            for (HackStyleSettings.Script script : settings.scripts) {
+                scripts.add(parser.parseScript(script));
+            }
+            return scripts;
+        } catch (ScriptParsingException e) {
+            ErrorMessage.createErrorFile(e);
+            e.printStackTrace();
+        }
+        return Collections.emptyList();
     }
 
     @Override
@@ -71,13 +96,18 @@ public class HackStyle extends Application {
 
         final List<HackStyleScript> scripts = readScripts(settings, parser);
 
+        final HackStyleScriptRunner scriptRunner = new HackStyleScriptRunner(
+                mainTab.getScrollBar().valueProperty(),
+                mainTab.getTextField().textProperty()
+        );
+
         scripts.forEach(mainTab::addScript);
 
         Keyboard.init();
         Keyboard.onKeyPress().perform(event -> {
             for (HackStyleScript script : mainTab.getActiveScripts().get()) {
                 if (KeyboardUtils.parseCharToKey(script.indicator()) == event.getKeyCode()) {
-                    script.start();
+                    scriptRunner.run(script);
                 }
             }
         });
@@ -96,36 +126,12 @@ public class HackStyle extends Application {
         primaryStage.setOnCloseRequest(event -> {
             Keyboard.destroy();
             Platform.exit();
-            System.exit(0);
+            scriptRunner.dispose();
         });
         primaryStage.show();
 
         if (!GlobalScreen.isNativeHookRegistered()) {
             System.exit(0);
         }
-    }
-
-    private static HackStyleSettings readSettings(String path) {
-        try {
-            return HackStyleSettingsReader.read(path);
-        } catch (JAXBException | FileNotFoundException e) {
-            e.printStackTrace();
-            ErrorMessage.createErrorFile(e);
-        }
-        return null;
-    }
-
-    private static List<HackStyleScript> readScripts(HackStyleSettings settings, HackStyleScriptParser parser) {
-        try {
-            final List<HackStyleScript> scripts = new ArrayList<>(settings.scripts.size());
-            for (HackStyleSettings.Script script : settings.scripts) {
-                scripts.add(parser.parseScript(script));
-            }
-            return scripts;
-        } catch (ScriptParsingException e) {
-            ErrorMessage.createErrorFile(e);
-            e.printStackTrace();
-        }
-        return Collections.emptyList();
     }
 }

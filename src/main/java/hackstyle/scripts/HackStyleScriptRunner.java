@@ -3,36 +3,34 @@ package hackstyle.scripts;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.StringProperty;
 
-public abstract class HackStyleScriptRunner {
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class HackStyleScriptRunner {
+
+    private final ExecutorService executorService = Executors.newCachedThreadPool();
 
     private final DoubleProperty scrollBarValue;
     private final StringProperty textFieldValue;
-
-    private boolean running = false;
 
     public HackStyleScriptRunner(DoubleProperty scrollBarValue, StringProperty textFieldValue) {
         this.scrollBarValue = scrollBarValue;
         this.textFieldValue = textFieldValue;
     }
 
-    public void start() {
-        final ScriptInput input = new ScriptInput(
-                (int) (1000 / this.scrollBarValue.get()),
-                this.textFieldValue.get());
-
+    private ScriptInput createScriptInput() {
+        final int delay = (int) (1000 / this.scrollBarValue.get());
+        final String text = this.textFieldValue.get();
+        return new ScriptInput(delay, text);
     }
 
-    public void stop() {
-        this.running = false;
+    public void run(HackStyleScript script) {
+        final ScriptInput input = createScriptInput();
+
+        this.executorService.submit(() -> script.execute(input));
     }
 
-    private void startLoop(int delay) {
-        this.running = true;
-
-        while (this.running) {
-            execute(delay);
-        }
+    public void dispose() {
+        this.executorService.shutdown();
     }
-
-    public abstract void execute(int delay);
 }
