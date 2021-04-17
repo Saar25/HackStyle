@@ -14,6 +14,10 @@
             <name>DEFAULT-AVATAR</name>
             <content>|&gt;</content>
         </value>
+        <value>
+            <name>MAX-SPAM-REPEAT</name>
+            <content>5</content>
+        </value>
     </values>
     <hackstyle-scripts>
         <hackstyle-script>
