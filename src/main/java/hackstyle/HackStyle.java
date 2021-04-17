@@ -29,9 +29,7 @@ public class HackStyle extends Application {
 
     private static HackStyleSettings readSettings() {
         try {
-            final HackStyleSettings read = HackStyleSettingsReader.read(HackStyle.SETTINGS_FILE);
-            System.out.println(read);
-            return read;
+            return HackStyleSettingsReader.read(HackStyle.SETTINGS_FILE);
         } catch (JAXBException | FileNotFoundException e) {
             ErrorMessage.createErrorFile(e);
             e.printStackTrace();

@@ -11,6 +11,4 @@ public @interface ScriptParameter {
 
     String value();
 
-    String defaultValue() default "";
-
 }

@@ -55,10 +55,10 @@ public class HackStyleSettings {
         @XmlElement(name = "indicator", required = true)
         public String indicator;
 
-        @XmlElement(name = "text")
+        @XmlElement(name = "text", defaultValue = "")
         public String text;
 
-        @XmlElement(name = "delay")
+        @XmlElement(name = "delay", defaultValue = "")
         public String delay;
     }
 

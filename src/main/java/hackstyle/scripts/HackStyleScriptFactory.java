@@ -2,7 +2,6 @@ package hackstyle.scripts;
 
 import hackstyle.scripts.exceptions.ScriptParsingException;
 import org.reflections.Reflections;
-import org.reflections.scanners.FieldAnnotationsScanner;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -57,29 +56,28 @@ public class HackStyleScriptFactory {
         final Supplier<HackStyleScript> supplier = SCRIPTS_MAP.get(settings.runner);
         final HackStyleScript script = supplier != null ? supplier.get() : new NoopScript();
 
-        final Reflections reflections = new Reflections(script, new FieldAnnotationsScanner());
-        final Set<Field> fields = reflections.getFieldsAnnotatedWith(ScriptParameter.class);
-
-        for (Field field : fields) {
-            try {
-                if (field.getName().equals("title")) {
-                    field.setAccessible(true);
-                    field.set(script, settings.title);
+        for (Field f : script.getClass().getFields()) {
+            final ScriptParameter annotation = f.getAnnotation(ScriptParameter.class);
+            if (annotation != null) {
+                try {
+                    f.setAccessible(true);
+                    switch (annotation.value()) {
+                        case "title":
+                            f.set(script, settings.title);
+                            break;
+                        case "indicator":
+                            f.set(script, settings.indicator);
+                            break;
+                        case "delay":
+                            f.set(script, settings.delay);
+                            break;
+                        case "text":
+                            f.set(script, settings.text);
+                            break;
+                    }
+                } catch (IllegalAccessException e) {
+                    throw new ScriptParsingException(e);
                 }
-                if (field.getName().equals("indicator")) {
-                    field.setAccessible(true);
-                    field.set(script, settings.indicator);
-                }
-                if (field.getName().equals("delay")) {
-                    field.setAccessible(true);
-                    field.set(script, settings.delay);
-                }
-                if (field.getName().equals("text")) {
-                    field.setAccessible(true);
-                    field.set(script, settings.text);
-                }
-            } catch (IllegalAccessException e) {
-                throw new ScriptParsingException(e);
             }
         }
 
