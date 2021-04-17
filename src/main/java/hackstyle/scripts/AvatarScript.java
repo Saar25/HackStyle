@@ -17,7 +17,7 @@ public class AvatarScript implements HackStyleScript {
     @ScriptParameter("text")
     private String text;
 
-    @ScriptParameter("default-avatar")
+    @ScriptParameter("DEFAULT-AVATAR")
     private String defaultAvatar;
 
     private boolean running = false;

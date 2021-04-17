@@ -74,7 +74,7 @@ public class HackStyle extends Application {
         gui.getTabs().add(mainTab);
         gui.getTabs().add(new InternetTab());
 
-        final HackStyleScriptFactory scriptFactory = new HackStyleScriptFactory();
+        final HackStyleScriptFactory scriptFactory = new HackStyleScriptFactory(settings.values);
 
         final List<HackStyleScript> scripts = readScripts(settings, scriptFactory);
 

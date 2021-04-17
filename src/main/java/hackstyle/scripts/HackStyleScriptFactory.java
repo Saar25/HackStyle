@@ -7,6 +7,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Supplier;
@@ -16,6 +17,12 @@ public class HackStyleScriptFactory {
     private static final String SCRIPTS_PACKAGE = "hackstyle.scripts";
 
     private final Map<String, Supplier<HackStyleScript>> SCRIPTS_MAP = buildScriptMap();
+
+    private final List<HackStyleSettings.Value> settingsValues;
+
+    public HackStyleScriptFactory(List<HackStyleSettings.Value> settingsValues) {
+        this.settingsValues = settingsValues;
+    }
 
     private Map<String, Supplier<HackStyleScript>> buildScriptMap() {
         final Map<String, Supplier<HackStyleScript>> scriptsMap = new HashMap<>();
@@ -74,6 +81,11 @@ public class HackStyleScriptFactory {
                         case "text":
                             f.set(script, settings.text);
                             break;
+                    }
+                    for (HackStyleSettings.Value settingsValue : this.settingsValues) {
+                        if (annotation.value().equals(settingsValue.name)) {
+                            f.set(script, settingsValue.content);
+                        }
                     }
                 } catch (IllegalAccessException e) {
                     throw new ScriptParsingException(e);
