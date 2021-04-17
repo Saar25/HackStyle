@@ -2,17 +2,19 @@ package hackstyle.scripts;
 
 import hackstyle.HaxballRobot;
 
-@Script("kick")
+@Script(name = "kick")
 public class KickScript implements HackStyleScript {
 
-    @ScriptParameter("name")
-    private String name;
+    @ScriptParameter("title")
+    private String title;
 
     @ScriptParameter("indicator")
     private String indicator;
 
     @ScriptParameter("delay")
     private String delay;
+
+    private boolean running = false;
 
     private int getDelay(ScriptInput input) {
         return this.delay.isEmpty()
@@ -22,7 +24,7 @@ public class KickScript implements HackStyleScript {
 
     @Override
     public String name() {
-        return this.name;
+        return this.title;
     }
 
     @Override
@@ -32,23 +34,17 @@ public class KickScript implements HackStyleScript {
 
     @Override
     public void execute(ScriptInput input) {
+        this.running = true;
 
+        final int delay = getDelay(input);
+        while (this.running) {
+            HaxballRobot.kick(delay);
+            HaxballRobot.sleep(delay);
+        }
     }
 
     @Override
     public void stop() {
-
+        this.running = false;
     }
-
-    public void run(ScriptInput input) {
-        final int delay = getDelay(input);
-
-        // super.startLoop(delay)
-    }
-
-    public void execute(int delay) {
-        HaxballRobot.kick(delay);
-        HaxballRobot.sleep(delay);
-    }
-
 }

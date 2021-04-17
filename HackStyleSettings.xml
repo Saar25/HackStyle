@@ -68,4 +68,12 @@
             </code>
         </script>
     </scripts>
+    <hackstyle-scripts>
+        <hackstyle-script>
+            <title>Avatar</title>
+            <runner>avatar</runner>
+            <indicator>Q</indicator>
+            <speed>SLIDER</speed>
+        </hackstyle-script>
+    </hackstyle-scripts>
 </hackstyle>

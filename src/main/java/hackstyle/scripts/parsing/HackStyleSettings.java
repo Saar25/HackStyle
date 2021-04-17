@@ -46,11 +46,23 @@ public class HackStyleSettings {
     @XmlAccessorType(XmlAccessType.FIELD)
     public static class Script {
 
-        @XmlElement(name = "name")
+        @XmlElement(name = "name", required = true)
         public String name;
 
-        @XmlElement(name = "indicator")
+        @XmlElement(name = "runner", required = true)
+        public String runner;
+
+        @XmlElement(name = "title", required = true)
+        public String title;
+
+        @XmlElement(name = "indicator", required = true)
         public String indicator;
+
+        @XmlElement(name = "text")
+        public String text;
+
+        @XmlElement(name = "speed")
+        public String speed;
 
         @XmlElement(name = "code")
         public String code;
@@ -59,7 +71,10 @@ public class HackStyleSettings {
         public String toString() {
             return "Script{" +
                     "name='" + name + '\'' +
+                    ", title='" + title + '\'' +
                     ", indicator='" + indicator + '\'' +
+                    ", text='" + text + '\'' +
+                    ", speed='" + speed + '\'' +
                     ", code='" + code + '\'' +
                     '}';
         }
