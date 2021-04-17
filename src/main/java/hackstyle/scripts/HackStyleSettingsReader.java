@@ -1,4 +1,4 @@
-package hackstyle.scripts.parsing;
+package hackstyle.scripts;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;

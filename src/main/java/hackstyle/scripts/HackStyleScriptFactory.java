@@ -1,7 +1,8 @@
 package hackstyle.scripts;
 
-import hackstyle.scripts.parsing.HackStyleSettings;
+import hackstyle.scripts.exceptions.ScriptParsingException;
 import org.reflections.Reflections;
+import org.reflections.scanners.FieldAnnotationsScanner;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -15,9 +16,9 @@ public class HackStyleScriptFactory {
 
     private static final String SCRIPTS_PACKAGE = "hackstyle.scripts";
 
-    private static final Map<String, Supplier<HackStyleScript>> SCRIPTS_MAP = buildScriptMap();
+    private final Map<String, Supplier<HackStyleScript>> SCRIPTS_MAP = buildScriptMap();
 
-    private static Map<String, Supplier<HackStyleScript>> buildScriptMap() {
+    private Map<String, Supplier<HackStyleScript>> buildScriptMap() {
         final Map<String, Supplier<HackStyleScript>> scriptsMap = new HashMap<>();
 
         final Reflections reflections = new Reflections(HackStyleScriptFactory.SCRIPTS_PACKAGE);
@@ -43,7 +44,7 @@ public class HackStyleScriptFactory {
         return scriptsMap;
     }
 
-    private static <T extends HackStyleScript> T constructScript(Constructor<T> constructor) {
+    private <T extends HackStyleScript> T constructScript(Constructor<T> constructor) {
         try {
             return constructor.newInstance();
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
@@ -52,10 +53,11 @@ public class HackStyleScriptFactory {
         }
     }
 
-    public static HackStyleScript createScript(HackStyleSettings.Script settings) {
-        final HackStyleScript script = SCRIPTS_MAP.get(settings.name).get();
+    public HackStyleScript createScript(HackStyleSettings.Script settings) throws ScriptParsingException {
+        final Supplier<HackStyleScript> supplier = SCRIPTS_MAP.get(settings.runner);
+        final HackStyleScript script = supplier != null ? supplier.get() : new NoopScript();
 
-        final Reflections reflections = new Reflections(script);
+        final Reflections reflections = new Reflections(script, new FieldAnnotationsScanner());
         final Set<Field> fields = reflections.getFieldsAnnotatedWith(ScriptParameter.class);
 
         for (Field field : fields) {
@@ -68,16 +70,16 @@ public class HackStyleScriptFactory {
                     field.setAccessible(true);
                     field.set(script, settings.indicator);
                 }
-                if (field.getName().equals("speed")) {
+                if (field.getName().equals("delay")) {
                     field.setAccessible(true);
-                    field.set(script, settings.speed);
+                    field.set(script, settings.delay);
                 }
                 if (field.getName().equals("text")) {
                     field.setAccessible(true);
                     field.set(script, settings.text);
                 }
             } catch (IllegalAccessException e) {
-                e.printStackTrace();
+                throw new ScriptParsingException(e);
             }
         }
 

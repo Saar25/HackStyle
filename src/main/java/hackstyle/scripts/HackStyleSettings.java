@@ -1,4 +1,4 @@
-package hackstyle.scripts.parsing;
+package hackstyle.scripts;
 
 import javax.xml.bind.annotation.*;
 import java.util.List;
@@ -11,8 +11,8 @@ public class HackStyleSettings {
     @XmlElement(name = "value")
     public List<Value> values;
 
-    @XmlElementWrapper(name = "scripts")
-    @XmlElement(name = "script")
+    @XmlElementWrapper(name = "hackstyle-scripts")
+    @XmlElement(name = "hackstyle-script")
     public List<Script> scripts;
 
     @Override
@@ -42,12 +42,9 @@ public class HackStyleSettings {
         }
     }
 
-    @XmlRootElement(name = "script")
+    @XmlRootElement(name = "hackstyle-script")
     @XmlAccessorType(XmlAccessType.FIELD)
     public static class Script {
-
-        @XmlElement(name = "name", required = true)
-        public String name;
 
         @XmlElement(name = "runner", required = true)
         public String runner;
@@ -61,23 +58,8 @@ public class HackStyleSettings {
         @XmlElement(name = "text")
         public String text;
 
-        @XmlElement(name = "speed")
-        public String speed;
-
-        @XmlElement(name = "code")
-        public String code;
-
-        @Override
-        public String toString() {
-            return "Script{" +
-                    "name='" + name + '\'' +
-                    ", title='" + title + '\'' +
-                    ", indicator='" + indicator + '\'' +
-                    ", text='" + text + '\'' +
-                    ", speed='" + speed + '\'' +
-                    ", code='" + code + '\'' +
-                    '}';
-        }
+        @XmlElement(name = "delay")
+        public String delay;
     }
 
 }

@@ -15,65 +15,32 @@
             <content>|&gt;</content>
         </value>
     </values>
-    <scripts>
-        <script>
-            <name>Press</name>
-            <indicator>R</indicator>
-            <code>
-                LOOP -1
-                KICK SLIDER
-                SLEEP SLIDER
-                ENDL
-            </code>
-        </script>
-        <script>
-            <name>Double</name>
-            <indicator>E</indicator>
-            <code>
-                LOOP 2
-                KICK SLIDER
-                SLEEP SLIDER
-                ENDL
-            </code>
-        </script>
-        <script>
-            <name>Click</name>
-            <indicator>R</indicator>
-            <code>
-                LOOP -1
-                CLICK SLIDER
-                SLEEP SLIDER
-                ENDL
-            </code>
-        </script>
-        <script>
-            <name>Spam</name>
-            <indicator>R</indicator>
-            <code>
-                LOOP -1
-                WRITE TEXTBAR
-                SLEEP SLIDER
-                ENDL
-            </code>
-        </script>
-        <script>
-            <name>Avatar</name>
-            <indicator>Q</indicator>
-            <code>
-                LOOP -1
-                AVATARS TEXTBAR SLIDER
-                SLEEP 100
-                ENDL
-                AVATAR DEFAULT_AVATAR
-            </code>
-        </script>
-    </scripts>
     <hackstyle-scripts>
+        <hackstyle-script>
+            <title>Press</title>
+            <runner>kick</runner>
+            <indicator>R</indicator>
+        </hackstyle-script>
+        <hackstyle-script>
+            <title>Double</title>
+            <runner>double-kick</runner>
+            <indicator>E</indicator>
+        </hackstyle-script>
+        <hackstyle-script>
+            <title>Click</title>
+            <runner>click</runner>
+            <indicator>R</indicator>
+            <speed>1</speed>
+        </hackstyle-script>
+        <hackstyle-script>
+            <title>Spam</title>
+            <runner>spam</runner>
+            <indicator>R</indicator>
+        </hackstyle-script>
         <hackstyle-script>
             <title>Avatar</title>
             <runner>avatar</runner>
             <indicator>Q</indicator>
-            <speed>SLIDER</speed>
         </hackstyle-script>
     </hackstyle-scripts>
 </hackstyle>

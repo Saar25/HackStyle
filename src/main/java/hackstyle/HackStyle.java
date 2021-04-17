@@ -4,16 +4,8 @@ import hackstyle.gui.InternetTab;
 import hackstyle.gui.MainTab;
 import hackstyle.keyboard.Keyboard;
 import hackstyle.keyboard.KeyboardUtils;
-import hackstyle.scripts.HackStyleScript;
-import hackstyle.scripts.HackStyleScriptRunner;
+import hackstyle.scripts.*;
 import hackstyle.scripts.exceptions.ScriptParsingException;
-import hackstyle.scripts.parsing.HackStyleScriptParser;
-import hackstyle.scripts.parsing.HackStyleSettings;
-import hackstyle.scripts.parsing.HackStyleSettingsReader;
-import hackstyle.scripts.parsing.ScriptVariableParser;
-import hackstyle.scripts.variables.ConstantVariable;
-import hackstyle.scripts.variables.ScrollBarVariable;
-import hackstyle.scripts.variables.TextBarVariable;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
@@ -35,21 +27,23 @@ public class HackStyle extends Application {
         launch(args);
     }
 
-    private static HackStyleSettings readSettings(String path) {
+    private static HackStyleSettings readSettings() {
         try {
-            return HackStyleSettingsReader.read(path);
+            final HackStyleSettings read = HackStyleSettingsReader.read(HackStyle.SETTINGS_FILE);
+            System.out.println(read);
+            return read;
         } catch (JAXBException | FileNotFoundException e) {
-            e.printStackTrace();
             ErrorMessage.createErrorFile(e);
+            e.printStackTrace();
         }
         return null;
     }
 
-    private static List<HackStyleScript> readScripts(HackStyleSettings settings, HackStyleScriptParser parser) {
+    private static List<HackStyleScript> readScripts(HackStyleSettings settings, HackStyleScriptFactory scriptFactory) {
         try {
             final List<HackStyleScript> scripts = new ArrayList<>(settings.scripts.size());
-            for (HackStyleSettings.Script script : settings.scripts) {
-                scripts.add(parser.parseScript(script));
+            for (HackStyleSettings.Script scriptSettings : settings.scripts) {
+                scripts.add(scriptFactory.createScript(scriptSettings));
             }
             return scripts;
         } catch (ScriptParsingException e) {
@@ -61,7 +55,7 @@ public class HackStyle extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        final HackStyleSettings settings = readSettings(SETTINGS_FILE);
+        final HackStyleSettings settings = readSettings();
         if (settings == null) {
             System.exit(-1);
         }
@@ -82,19 +76,9 @@ public class HackStyle extends Application {
         gui.getTabs().add(mainTab);
         gui.getTabs().add(new InternetTab());
 
-        final ScriptVariableParser variableParser = new ScriptVariableParser();
-        variableParser.addScriptVariableCreator("SLIDER", () ->
-                new ScrollBarVariable(mainTab.getScrollBar()));
-        variableParser.addScriptVariableCreator("TEXTBAR", () ->
-                new TextBarVariable(mainTab.getTextField()));
-        for (HackStyleSettings.Value value : settings.values) {
-            variableParser.addScriptVariableCreator(value.name,
-                    () -> new ConstantVariable(value.content));
-        }
+        final HackStyleScriptFactory scriptFactory = new HackStyleScriptFactory();
 
-        final HackStyleScriptParser parser = new HackStyleScriptParser(variableParser);
-
-        final List<HackStyleScript> scripts = readScripts(settings, parser);
+        final List<HackStyleScript> scripts = readScripts(settings, scriptFactory);
 
         final HackStyleScriptRunner scriptRunner = new HackStyleScriptRunner(
                 mainTab.getScrollBar().valueProperty(),
