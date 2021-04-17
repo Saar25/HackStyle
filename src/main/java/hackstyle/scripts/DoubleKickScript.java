@@ -15,9 +15,8 @@ public class DoubleKickScript implements HackStyleScript {
     private String delay;
 
     private int getDelay(ScriptInput input) {
-        return this.delay.isEmpty()
-                ? input.getDelay()
-                : Integer.parseInt(this.delay);
+        return this.delay == null || this.delay.isEmpty()
+                ? input.getDelay() : Integer.parseInt(this.delay);
     }
 
     @Override

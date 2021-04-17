@@ -56,7 +56,7 @@ public class HackStyleScriptFactory {
         final Supplier<HackStyleScript> supplier = SCRIPTS_MAP.get(settings.runner);
         final HackStyleScript script = supplier != null ? supplier.get() : new NoopScript();
 
-        for (Field f : script.getClass().getFields()) {
+        for (Field f : script.getClass().getDeclaredFields()) {
             final ScriptParameter annotation = f.getAnnotation(ScriptParameter.class);
             if (annotation != null) {
                 try {
