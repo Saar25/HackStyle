@@ -27,6 +27,11 @@ public class AvatarScript implements HackStyleScript {
                 ? input.getDelay() : Integer.parseInt(this.delay);
     }
 
+    private String getText(ScriptInput input) {
+        return this.text == null || this.text.isEmpty()
+                ? input.getText() : this.text;
+    }
+
     @Override
     public String name() {
         return this.title;
@@ -45,7 +50,8 @@ public class AvatarScript implements HackStyleScript {
         int index = 0;
 
         while (this.running) {
-            final String avatar = getAvatar(index);
+            final String text = getText(input);
+            final String avatar = getAvatar(text, index);
             HaxballRobot.setAvatar(avatar);
             HaxballRobot.sleep(delay);
 
@@ -60,9 +66,9 @@ public class AvatarScript implements HackStyleScript {
         this.running = false;
     }
 
-    private String getAvatar(int index) {
-        return this.text.length() > index + 1
-                ? this.text.substring(index, index + 2)
-                : this.text.charAt(index) + "";
+    private String getAvatar(String text, int index) {
+        return text.length() > index + 1
+                ? text.substring(index, index + 2)
+                : text.charAt(index) + "";
     }
 }

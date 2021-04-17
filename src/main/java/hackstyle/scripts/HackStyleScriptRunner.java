@@ -27,7 +27,13 @@ public class HackStyleScriptRunner {
     public void run(HackStyleScript script) {
         final ScriptInput input = createScriptInput();
 
-        this.executorService.submit(() -> script.execute(input));
+        this.executorService.submit(() -> {
+            try {
+                script.execute(input);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     public void dispose() {
