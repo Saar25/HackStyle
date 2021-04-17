@@ -1,0 +1,51 @@
+<hackstyle>
+    <values>
+        <!-- required -->
+        <value>
+            <name>DEFAULT-TEXTFIELD</name>
+            <content>|&gt;&lt;|</content>
+        </value>
+        <!-- required -->
+        <value>
+            <name>DEFAULT-SLIDER</name>
+            <content>25</content>
+        </value>
+        <value>
+            <name>DEFAULT-AVATAR</name>
+            <content>|&gt;</content>
+        </value>
+        <value>
+            <name>MAX-SPAM-REPEAT</name>
+            <content>5</content>
+        </value>
+    </values>
+    <hackstyle-scripts>
+        <hackstyle-script>
+            <title>Press</title>
+            <runner>kick</runner>
+            <indicator>R</indicator>
+        </hackstyle-script>
+        <hackstyle-script>
+            <title>Double</title>
+            <runner>double-kick</runner>
+            <indicator>E</indicator>
+        </hackstyle-script>
+        <hackstyle-script>
+            <title>Click</title>
+            <runner>click</runner>
+            <indicator>R</indicator>
+            <speed>1</speed>
+        </hackstyle-script>
+        <hackstyle-script>
+            <title>Spam</title>
+            <runner>spam</runner>
+            <indicator>R</indicator>
+        </hackstyle-script>
+        <hackstyle-script>
+            <title>Avatar</title>
+            <runner>avatar</runner>
+            <indicator>Q</indicator>
+            <delay>200</delay>
+        </hackstyle-script>
+    </hackstyle-scripts>
+</hackstyle>
