@@ -11,8 +11,10 @@ public class ScriptCheckBox extends CheckBox {
         setMinSize(100, 61);
         setSelected(false);
         setStyle("-fx-font: 20px Tahoma;");
-        selectedProperty().addListener((o, l, isCheck) ->
-                activeScripts.setActive(script, isCheck));
+        selectedProperty().addListener((o, l, isCheck) -> {
+            activeScripts.setActive(script, isCheck);
+            if (!isCheck) script.stop();
+        });
     }
 
 }

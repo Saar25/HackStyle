@@ -41,6 +41,7 @@
             <title>Avatar</title>
             <runner>avatar</runner>
             <indicator>Q</indicator>
+            <delay>200</delay>
         </hackstyle-script>
     </hackstyle-scripts>
 </hackstyle>

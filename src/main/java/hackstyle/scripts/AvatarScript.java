@@ -55,7 +55,7 @@ public class AvatarScript implements HackStyleScript {
             HaxballRobot.setAvatar(avatar);
             HaxballRobot.sleep(delay);
 
-            index = index + 2 < avatar.length() ? index + 2 : 0;
+            index = index + 2 < text.length() ? index + 2 : 0;
         }
 
         HaxballRobot.setAvatar(this.defaultAvatar);
