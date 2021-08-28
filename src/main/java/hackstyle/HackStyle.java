@@ -110,6 +110,11 @@ public class HackStyle extends Application {
             Keyboard.destroy();
             Platform.exit();
             scriptRunner.dispose();
+            try {
+                HackStyleSettingsReader.save(HackStyle.SETTINGS_FILE, settings);
+            } catch (JAXBException e) {
+                e.printStackTrace();
+            }
         });
         primaryStage.show();
 

@@ -46,11 +46,11 @@ public class HackStyleSettings {
     @XmlAccessorType(XmlAccessType.FIELD)
     public static class Script {
 
-        @XmlElement(name = "runner", required = true)
-        public String runner;
-
         @XmlElement(name = "title", required = true)
         public String title;
+
+        @XmlElement(name = "runner", required = true)
+        public String runner;
 
         @XmlElement(name = "indicator", required = true)
         public String indicator;
