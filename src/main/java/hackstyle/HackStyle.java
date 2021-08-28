@@ -2,6 +2,7 @@ package hackstyle;
 
 import hackstyle.gui.InternetTab;
 import hackstyle.gui.MainTab;
+import hackstyle.gui.SettingsTab;
 import hackstyle.keyboard.Keyboard;
 import hackstyle.keyboard.KeyboardUtils;
 import hackstyle.scripts.*;
@@ -74,6 +75,7 @@ public class HackStyle extends Application {
 
         gui.getTabs().add(mainTab);
         gui.getTabs().add(new InternetTab());
+        gui.getTabs().add(new SettingsTab(settings));
 
         final HackStyleScriptFactory scriptFactory = new HackStyleScriptFactory(settings.values);
 

@@ -1,11 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <hackstyle>
     <values>
-        <!-- required -->
         <value>
             <name>DEFAULT-TEXTFIELD</name>
             <content>|&gt;&lt;|</content>
         </value>
-        <!-- required -->
         <value>
             <name>DEFAULT-SLIDER</name>
             <content>25</content>
@@ -34,7 +33,7 @@
             <title>Click</title>
             <runner>click</runner>
             <indicator>R</indicator>
-            <speed>1</speed>
+            <delay>1</delay>
         </hackstyle-script>
         <hackstyle-script>
             <title>Spam</title>
