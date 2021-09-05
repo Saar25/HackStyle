@@ -12,7 +12,7 @@ const style = window.style = {};
 
 style.avatars = "המהפכה".split("")
 style.destroy = "ఌ佹砕Ĉ⼈渻䬭॑⬺爂᰾ᜪ䉧ᬯ㍸᜖ᘬ慩㙲Ԑ瀩ञࠣ笋℉⨄㐷紪権ਛൽ㔙怅㬆癕⨴琐ḉ≼崪ᙻḻ⨂㈿爇䕦ᴵ灾㸏眮ቡᄸ܍礂海學㰌⬦ ѫ⼕ย⌑ḷ㠕ፃ㤕㌋␢眢砬ⵯ煾Ⱘ縂㉰匊㤀ह稫ᝈⴾㄫ㤒䉊؈ି㔞帱ॹࠚⰯἯ浸ἱᔞ፭ਮ娮ف㤮〕㱳⬗ᅷд甇ᜯ⩿ᤶⱁ戃 椏缁⼐獾⌱മ㈐ᵲ桨ԷᴑĿᑆ㨤ఴ⑸甈⨘Ѳ∯㘴䁔ح฾،ฌ"
-style.defaultAvatar = ":}";
+style.defaultAvatar = "|>";
 style.avatarIndex = 0;
 
 class Timer {
@@ -52,7 +52,7 @@ const initGameDocument = () => {
     gameDocument = window.gameDocument = document.getElementsByClassName('gameframe')[0].contentWindow.document;
 }
 
-const regexes = {
+const hebrewRegexes = {
     "a$": "ה",
     "m$": "ם",
     "n$": "ן",
@@ -86,7 +86,7 @@ const regexes = {
 }
 style.toHebrew = (word) => {
     if (/^[aeiou]/gi.test(word)) word = "א" + word;
-    for (let [regex, replacement] of Object.entries(regexes)) {
+    for (let [regex, replacement] of Object.entries(hebrewRegexes)) {
         word = word.replace(new RegExp(regex, "gi"), replacement);
     }
     return word;
@@ -192,10 +192,22 @@ const isUserMessage = message => {
     return message.indexOf(": ") != -1;
 }
 
+const nameRegexes = [
+    ...[...Array(26)].map((_, i) => ({ from: String.fromCharCode(55349, 56788 + i), to: String.fromCharCode(65 + i) })),
+    ...[...Array(26)].map((_, i) => ({ from: String.fromCharCode(55349, 56814 + i), to: String.fromCharCode(97 + i) })),
+];
+const decodeSendName = (word) => {
+    if (/^[aeiou]/gi.test(word)) word = "א" + word;
+    for (let { from, to } of nameRegexes) {
+        word = word.replace(new RegExp(from, "gi"), to);
+    }
+    return word;
+}
+
 const copyLastMessage = () => {
     const children = style.chatHistory().children
     const text = children[children.length - 1].innerText
-    const sender = text.slice(0, text.indexOf(": "))
+    const sender = decodeSendName(text.slice(0, text.indexOf(": ")));
     var message = text.slice(text.indexOf(": ") + 2)
     if (sender != style.nickname() && text.indexOf(": ") != -1) {
         const hebrewSender = style.toHebrew(sender);
