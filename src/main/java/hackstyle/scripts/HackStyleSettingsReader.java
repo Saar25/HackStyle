@@ -1,5 +1,7 @@
 package hackstyle.scripts;
 
+import hackstyle.ErrorMessage;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -8,8 +10,9 @@ import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMResult;
+import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import javax.xml.transform.stream.StreamSource;
 import java.io.*;
 import java.nio.file.Files;
 
@@ -35,11 +38,22 @@ public final class HackStyleSettingsReader {
     }
 
     public static void save(String path, HackStyleSettings settings) throws JAXBException {
-        final JAXBContext jaxbContext = JAXBContext.newInstance(HackStyleSettings.class);
-        final Marshaller marshaller = jaxbContext.createMarshaller();
+        try {
+            final JAXBContext jaxbContext = JAXBContext.newInstance(HackStyleSettings.class);
+            final Marshaller marshaller = jaxbContext.createMarshaller();
+            final File file = new File(path);
 
-        final File file = new File(path);
-        marshaller.marshal(settings, file);
+            final OutputStream out = new FileOutputStream(file);
+            final DOMResult domResult = new DOMResult();
+            marshaller.marshal(settings, domResult);
+
+            final Transformer transformer = TransformerFactory.newInstance().newTransformer();
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+            transformer.transform(new DOMSource(domResult.getNode()), new StreamResult(out));
+        } catch (IOException | TransformerException e) {
+            ErrorMessage.createErrorFile(e);
+        }
     }
 
 }
