@@ -7,24 +7,25 @@ import java.util.Date;
 
 public final class ErrorMessage {
 
+    private static final DateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+
     private ErrorMessage() {
 
     }
 
-    public static void createErrorFile(Exception e) {
-        try (PrintWriter writer = new PrintWriter("HackStyleError.txt")) {
-            DateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+    public static void createErrorFile(Exception exception) {
+        try (final PrintWriter writer = new PrintWriter("HackStyleError.txt")) {
             writer.println("Date: " + format.format(new Date()));
-            writer.println("*******\nAn error occurred, please show me (Style) the error so I can fix it :}\n*******\n");
+            writer.println("*******\nAn error occurred, please send me (Style) the error so I can fix it :}\n*******\n");
 
-            writer.println(e.getClass().getName() + ": " + e.getMessage());
-            for (StackTraceElement stackTraceElement : e.getStackTrace()) {
+            writer.println(exception.getClass().getName() + ": " + exception.getMessage());
+            for (StackTraceElement stackTraceElement : exception.getStackTrace()) {
                 writer.println(stackTraceElement.toString());
             }
-        } catch (Exception e1) {
-            e1.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        e.printStackTrace();
+        exception.printStackTrace();
     }
 
 }

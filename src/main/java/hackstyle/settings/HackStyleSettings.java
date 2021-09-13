@@ -1,4 +1,4 @@
-package hackstyle.scripts;
+package hackstyle.settings;
 
 import javax.xml.bind.annotation.*;
 import java.util.List;

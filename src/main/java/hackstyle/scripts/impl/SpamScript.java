@@ -1,6 +1,10 @@
-package hackstyle.scripts;
+package hackstyle.scripts.impl;
 
 import hackstyle.HaxballRobot;
+import hackstyle.scripts.HackStyleScript;
+import hackstyle.scripts.Script;
+import hackstyle.scripts.ScriptInput;
+import hackstyle.scripts.ScriptParameter;
 
 @Script(name = "spam")
 public class SpamScript implements HackStyleScript {

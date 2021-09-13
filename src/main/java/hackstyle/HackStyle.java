@@ -7,6 +7,8 @@ import hackstyle.keyboard.Keyboard;
 import hackstyle.keyboard.KeyboardUtils;
 import hackstyle.scripts.*;
 import hackstyle.scripts.exceptions.ScriptParsingException;
+import hackstyle.settings.HackStyleSettings;
+import hackstyle.settings.HackStyleSettingsReader;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;

@@ -1,6 +1,11 @@
-package hackstyle.scripts;
+package hackstyle;
 
+import hackstyle.scripts.HackStyleScript;
+import hackstyle.scripts.NoopScript;
+import hackstyle.scripts.Script;
+import hackstyle.scripts.ScriptParameter;
 import hackstyle.scripts.exceptions.ScriptParsingException;
+import hackstyle.settings.HackStyleSettings;
 import org.reflections.Reflections;
 
 import java.lang.reflect.Constructor;
@@ -14,7 +19,7 @@ import java.util.function.Supplier;
 
 public class HackStyleScriptFactory {
 
-    private static final String SCRIPTS_PACKAGE = "hackstyle.scripts";
+    private static final String SCRIPTS_PACKAGE = "hackstyle.scripts.impl";
 
     private final Map<String, Supplier<HackStyleScript>> SCRIPTS_MAP = buildScriptMap();
 
