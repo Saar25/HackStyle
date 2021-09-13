@@ -29,6 +29,8 @@ If you want HackStyle.js to run every time you enter haxball,
 add an extension to your browser that can run your scripts (e.g. Tampermonkey)  
 and add HackStyle.js to your userscripts
 
+![alt text](https://github.com/Saar25/HackStyle/blob/master/Images/HackStyle%20js.png?raw=true)
+
 HackStyle.js features:  
 Avatar changer  
 Spam button  
