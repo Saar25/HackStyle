@@ -10,6 +10,8 @@ Go to the project releases and find the latest release
 
 ### HackStyle.jar
 
+If you are using linux, make sure to install openjfx before running the program  
+
 If your computer has java 9 or above - Download HackStyle.jar  
 Otherwise - Download DownloadForJava8.rar and extract the files inside the rar
 
